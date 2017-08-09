@@ -1,0 +1,5 @@
+south
+west
+centre
+north
+east
