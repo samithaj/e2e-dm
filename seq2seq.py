@@ -16,24 +16,24 @@ import tool.data_loader as dl
 
 # Define some parameters for model setup, training and data loading
 class Parameters():
-    batch_size = 4000
+    batch_size = 40
     grad_clip = 1
     epoch_num = 200
     learning_rate = 0.1
     dropout = 0.5
-    save_step = 20
+    save_step = 40
     check_step = 10
 
     turn_num = 3  # number of history turns
-    vocab_size = 771  # number of words used in vocabulary
+    vocab_size = 770  # number of words used in vocabulary
     utc_length = 20  # Max length of sentence, a sentence longer than max_length will be truncated
     gen_length = 20
-    layer_num = 3
-    embed_size = 20
-    state_size = 40
+    layer_num = 1
+    embed_size = 21
+    state_size = 30
 
     data_dir = '/home/qihu/PycharmProjects/e2e-dm_dstc/data'
-    tmp_dir = '/home/qihu/PycharmProjects/e2e-dm_dstc/tmp'
+    tmp_dir = '/home/qihu/PycharmProjects/e2e-dm_dstc/tmp/seq2seq'
     vocab_path = os.path.join(data_dir, 'all_vocab.txt')
     kb_path = os.path.join(data_dir, 'dialog-babi-task6-dstc2-kb.txt')
     # Train/Dev/Test path
@@ -68,38 +68,32 @@ class Data(object):
                                               self.word2id,
                                               self.names,
                                               self.val2attr,
-                                              params.turn_num * params.utc_length,
-                                              back=True)
+                                              params.turn_num*params.utc_length)
         dev_input_id = dl.convert_2D_str2id(dev_input,
-                                            self.word2id,
-                                            self.names,
-                                            self.val2attr,
-                                            params.turn_num * params.utc_length,
-                                            back=True)
-        test_input_id = dl.convert_2D_str2id(test_input,
-                                             self.word2id,
-                                             self.names,
-                                             self.val2attr,
-                                             params.turn_num * params.utc_length,
-                                             back=True)
-        train_output_id = dl.convert_2D_str2id(self.train_sys,
-                                               self.word2id,
-                                               self.names,
-                                               self.val2attr,
-                                               params.utc_length,
-                                               add_headrear=True)
-        dev_output_id = dl.convert_2D_str2id(self.dev_sys,
-                                             self.word2id,
-                                             self.names,
-                                             self.val2attr,
-                                             params.utc_length,
-                                             add_headrear=True)
-        test_output_id = dl.convert_2D_str2id(self.test_sys,
                                               self.word2id,
                                               self.names,
                                               self.val2attr,
-                                              params.utc_length,
-                                              add_headrear=True)
+                                              params.turn_num * params.utc_length)
+        test_input_id = dl.convert_2D_str2id(test_input,
+                                              self.word2id,
+                                              self.names,
+                                              self.val2attr,
+                                              params.turn_num * params.utc_length)
+        train_output_id = dl.convert_2D_str2id(self.train_sys,
+                                              self.word2id,
+                                              self.names,
+                                              self.val2attr,
+                                              params.utc_length)
+        dev_output_id = dl.convert_2D_str2id(self.dev_sys,
+                                            self.word2id,
+                                            self.names,
+                                            self.val2attr,
+                                            params.utc_length)
+        test_output_id = dl.convert_2D_str2id(self.test_sys,
+                                             self.word2id,
+                                             self.names,
+                                             self.val2attr,
+                                             params.utc_length)
         # Get number of restaurant in api_call result
         train_api_number = dl.get_api_number(train_api, train_input)
         dev_api_number = dl.get_api_number(dev_api, dev_input)
@@ -137,7 +131,7 @@ class Data(object):
     # Get the train data of current batch
     def get_train_batch(self):
         start = self._pointer
-        end = self._pointer + self.batch_size
+        end = self._pointer+self.batch_size
         input_id = self.train_input_id[start:end]
         api_num = self.train_api_num[start:end]
         output_id = self.train_output_id[start:end]
@@ -175,74 +169,45 @@ class Seq2Seq(object):
     def __init__(self, params):
         # Input variable
         if infer == 1:
-            batch_size = 1
-            gen_length = 1
-        else:
-            batch_size = params.batch_size
-            gen_length = params.gen_length
+            params.batch_size = 1
+            params.gen_length = 1
+
         self.dropout_keep = tf.placeholder_with_default(tf.constant(1.0), shape=None)
         self.lr = tf.placeholder_with_default(tf.constant(0.01), shape=None)
-        self.x_word = tf.placeholder(tf.int32, shape=(None, params.turn_num * params.utc_length), name='x_word')
-        self.x_api = tf.placeholder(tf.float32, shape=(None, 3), name='x_api')
-        self.y_word_in = tf.placeholder(tf.int32, shape=(None, gen_length), name='y_word')
-        self.y_word_out = tf.placeholder(tf.int32, shape=(None, gen_length), name='y_word')
-        # Word embedding
-        x_embedding = tf.get_variable(name='x_embedding', shape=[params.vocab_size, params.embed_size])
-        x_word_embedded = tf.nn.embedding_lookup(x_embedding, self.x_word)
-        y_embedding = tf.get_variable(name='y_embedding', shape=[params.vocab_size, params.embed_size])
-        y_word_embedded = tf.nn.embedding_lookup(y_embedding, self.y_word_in)
-        # Extend x_api to concat with y_word_embedded
-        x_api = tf.expand_dims(self.x_api, 1)
-        x_api_extend = x_api
-        for i in range(gen_length - 1):
-            x_api_extend = tf.concat([x_api_extend, x_api], 1)
-        y_word_embedded = tf.concat([y_word_embedded, x_api_extend], 2)
+        # self.x_word = [tf.placeholder(tf.int32, shape=[None], name='x_word')]*params.batch_size
+        # self.y_word_in = [tf.placeholder(tf.int32, shape=[None], name='y_word')]*params.batch_size
+        # self.y_word_out = [tf.placeholder(tf.int32, shape=[None], name='y_word')]*params.batch_size
+        # self.x_api = [tf.placeholder(tf.float32, shape=[None], name='x_api')] * params.batch_size
+        self.y_word_out = tf.placeholder(tf.int32, shape=[None, params.gen_length], name='y_word')
+        self.x_api = tf.placeholder(tf.float32, shape=[None, 3], name='x_api')
 
-        def single_cell(state_size):  # define the cell of LSTM
-            return tf.contrib.rnn.BasicLSTMCell(state_size)
+        # Feeds for inputs.
+        self.x_word = []
+        self.y_word_in = []
+        for i in xrange(params.batch_size):  # Last bucket is the biggest one.
+            self.x_word.append(tf.placeholder(tf.int32, shape=[None], name="encoder{0}".format(i)))
+            self.y_word_in.append(tf.placeholder(tf.int32, shape=[None], name="decoder{0}".format(i)))
 
-        # Encoder
-        self.encoder_multi_cell = tf.contrib.rnn.MultiRNNCell(
-            [single_cell(params.state_size) for _ in range(params.layer_num)])  # multi-layer
-        self.encoder_initial_state = self.encoder_multi_cell.zero_state(
-            batch_size, tf.float32)  # init state of LSTM
-        with tf.variable_scope('encoder'):
-            self.encoder_outputs, self.encoder_last_state = tf.nn.dynamic_rnn(self.encoder_multi_cell,
-                                                                              x_word_embedded,
-                                                                              initial_state=self.encoder_initial_state,
-                                                                              scope='encoder')
-        # Use encoder_last_state as input of decoder (not as initial_state)
-        encoder_last_state = self.encoder_last_state[0][0]  # Use state c as the feature
-        encoder_last_state = tf.expand_dims(encoder_last_state, 1)
-        encoder_last_state_extend = encoder_last_state
-        for i in range(gen_length - 1):
-            encoder_last_state_extend = tf.concat([encoder_last_state_extend, encoder_last_state], 1)
-        y_word_embedded = tf.concat([y_word_embedded, encoder_last_state_extend], 2)
-
-        # Decoder
-        self.decoder_multi_cell = tf.contrib.rnn.MultiRNNCell(
-            [single_cell(params.state_size) for _ in range(params.layer_num)])  # multi-layer
-        self.decoder_initial_state = self.encoder_last_state
-        # self.decoder_initial_state = \
-        #     self.decoder_multi_cell.zero_state(params.batch_size, tf.float32)  # initial state of LSTM
-        with tf.variable_scope('decoder'):
-            self.decoder_outputs, self.decoder_last_state = tf.nn.dynamic_rnn(self.decoder_multi_cell,
-                                                                              y_word_embedded,
-                                                                              initial_state=self.decoder_initial_state,
-                                                                              scope='decoder')
+        outputs, states = tf.contrib.legacy_seq2seq.embedding_attention_seq2seq(
+            self.x_word,
+            self.y_word_in,
+            cell=tf.contrib.rnn.BasicLSTMCell(params.state_size),
+            num_encoder_symbols=params.vocab_size,
+            num_decoder_symbols=params.vocab_size,
+            embedding_size=params.embed_size)
 
         self.w = tf.get_variable("softmax_w", [params.state_size, params.vocab_size])  # weights for output
         self.b = tf.get_variable("softmax_b", [params.vocab_size])
+
         # Loss
-        output = tf.reshape(self.decoder_outputs, [-1, params.state_size])
+        output = tf.reshape(outputs, [-1, params.state_size])
         self.logits = tf.matmul(output, self.w) + self.b
         self.probs = tf.nn.softmax(self.logits)
         targets = tf.reshape(self.y_word_out, [-1])
         weights = tf.ones_like(targets, dtype=tf.float32)
         # print self.logits, targets, weights
-        print self.logits
         loss = tf.contrib.legacy_seq2seq.sequence_loss([self.logits], [targets], [weights])
-        self.cost = tf.reduce_sum(loss) / batch_size
+        self.cost = tf.reduce_sum(loss) / params.batch_size
         optimizer = tf.train.AdamOptimizer(self.lr)
         tvars = tf.trainable_variables()
         grads = tf.gradients(self.cost, tvars)
@@ -252,17 +217,14 @@ class Seq2Seq(object):
 
 # train the LSTM model
 def train(data, model, params):
-    print 'Training ...'
     sess = tf.Session()
     sess.run(tf.global_variables_initializer())
-    if params.restore:
-        ckpt = tf.train.latest_checkpoint(params.tmp_dir)
-        dl.optimistic_restore(sess, ckpt)
     saver = tf.train.Saver()
     x_word, x_api, y_word_in, y_word_out = data.get_batch(data.dev_input_id,
                                                           data.dev_api_num,
                                                           data.dev_output_id)
-
+    print params.batch_size
+    print x_word[:params.batch_size][0].shape
     dev_feed_dict = {
         model.x_word: x_word[:params.batch_size],
         model.x_api: x_api[:params.batch_size],
@@ -271,7 +233,7 @@ def train(data, model, params):
         model.dropout_keep: 1.0
     }
 
-    max_iter = params.epoch_num * data.num_train / params.batch_size
+    max_iter = params.epoch_num*data.num_train/params.batch_size
     for i in range(max_iter):
         x_word, x_api, y_word_in, y_word_out = data.get_train_batch()
         feed_dict = {
@@ -296,18 +258,14 @@ def train(data, model, params):
 
 
 def test(data, model, params):
-    print 'Testing ...'
     sess = tf.Session()
     sess.run(tf.global_variables_initializer())
     ckpt = tf.train.latest_checkpoint(params.tmp_dir)
-    print ckpt
     dl.optimistic_restore(sess, ckpt)
     test_x_word, test_x_api, test_y_word_in, test_y_word_out = \
         data.get_batch(data.test_input_id, data.test_api_num, data.test_output_id)
-    raw_str = dl.flatten_2D(data.test_usr)
-    f = open(os.path.join(params.tmp_dir, 'test_result.txt'), 'w')
+
     for i in range(data.num_test):
-        x_raw_str = raw_str[i]
         x_word = [test_x_word[i]]
         x_api = [test_x_api[i]]
         y_word_in = [test_y_word_in[i]]
@@ -319,8 +277,7 @@ def test(data, model, params):
             model.encoder_initial_state: state,
         }
         encoder_last_state = sess.run(model.encoder_last_state, feed_dict)
-        state = encoder_last_state
-        # state = sess.run(model.decoder_multi_cell.zero_state(1, tf.float32))
+        state = sess.run(model.decoder_multi_cell.zero_state(1, tf.float32))
         # Run decoder
         answer = ''
         word = '<s>'
@@ -330,28 +287,24 @@ def test(data, model, params):
             feed_dict = {
                 model.x_api: x_api,
                 model.y_word_in: x,
-                # model.encoder_last_state: encoder_last_state,
+                model.encoder_last_state: encoder_last_state,
                 model.decoder_initial_state: state,
             }
             probs, state = sess.run([model.probs, model.decoder_last_state], feed_dict)
             p = probs[0]
             word = data.convert(np.argmax(p), data.id2word)
-            if word == '</s>':
-                break
-            answer += word+' '
-        show_str = ('%d\t%s\n\t%s\n' % (i + 1, x_raw_str, answer))
+            # if word == '</s>':
+            #     break
+            answer += word
+        show_str = ('%d\t%s' % (i + 1, unicode(answer, encoding='utf-8')))
         print(show_str)
-        f.write('%s\n' % show_str)
     sess.close()
-    f.close()
-    print 'Testing ...'
 
 
 # Main function for arguments reading
-def main(infer, restore=False):
+def main(infer):
     params = Parameters()
     params.infer = infer
-    params.restore = restore
     model = Seq2Seq(params)
     print 'Loading data ...'
     data = Data(params)
@@ -366,13 +319,12 @@ def main(infer, restore=False):
 if __name__ == '__main__':
     msg = """
     Usage:
-    Training: python e2e.py 0 0
-    Testing: python e2e.py 1 0
+    Training: python seq2seq.py 0
+    Testing: python seq2seq.py 1
     """
-    if len(sys.argv) == 3:
-        infer = int(sys.argv[1])
-	restore = int(sys.argv[2])
-        main(infer, restore)
+    if len(sys.argv) == 2:
+        infer = int(sys.argv[-1])
+        main(infer)
     else:
         print(msg)
         sys.exit(1)

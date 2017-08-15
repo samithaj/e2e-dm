@@ -8,6 +8,7 @@
 
 import copy
 import numpy as np
+import tensorflow as tf
 
 
 # Read the knowledge base
@@ -114,7 +115,7 @@ def read_dialog(data_path):
             sys_dialog_list.append(sys)
             turn_id += 1
         i += 1
-    print('\tNumber of dialog: %d' % dialog_id)
+    # print('\tNumber of dialog: %d' % dialog_id)
     return usr_list, sys_list, api_call_list
 
 
@@ -138,7 +139,7 @@ def extract_utc(utc_list):
 # Read word2id_dict from vocab
 def read_word2id(vocab_path, num_word):
     word2id_dict = {}
-    id2word_list = []
+    id2word_list = ['']
     with open(vocab_path) as f:
         lines = f.readlines()
     for i in range(num_word):
@@ -171,12 +172,12 @@ def convert_str2id(utc_list, word2id_dict, names, val2attr, max_length):
             id_vector[j] = word2id_dict[word]
         id_dialog_list.append(id_vector)
     id_list.append(id_dialog_list)
-    print('\tMax length: %d' % max_actual_length)
+    # print('\tMax length: %d' % max_actual_length)
     return id_list
 
 
 # Convert words to ids (input utc_list is a 2D list, each element represents a dialogue)
-def convert_2D_str2id(utc_list, word2id_dict, names, val2attr, max_length):
+def convert_2D_str2id(utc_list, word2id_dict, names, val2attr, max_length, back=False, add_headrear=False):
     id_list = []
     max_actual_length = 0
     num_dialog = len(utc_list)
@@ -187,20 +188,27 @@ def convert_2D_str2id(utc_list, word2id_dict, names, val2attr, max_length):
         num_turn = len(dialog)
         for j in range(num_turn):
             line = dialog[j].strip('\n').split(' ')
-            # line = ['<s>'] + line + ['</s>']
+            if add_headrear:
+                line = ['<s>'] + line + ['</s>']
             id_vector = np.zeros(max_length)
             max_actual_length = max(len(line), max_actual_length)
             actual_length = min(len(line), max_length)
+            start = max_length - actual_length
             for j in range(actual_length):
                 word = line[j]
+                if word not in word2id_dict.keys():
+                    continue
                 if word in names:  # replace restaurant name
                     word = 'R_name'
                 if word in val2attr:  # replace restaurant attributes
                     word = val2attr[word]
-                id_vector[j] = word2id_dict[word]
+                if back:
+                    id_vector[start+j] = word2id_dict[word]
+                else:
+                    id_vector[j] = word2id_dict[word]
             id_dialog_list.append(id_vector)
         id_list.append(id_dialog_list)
-    print('\tMax length: %d' % max_actual_length)
+    # print('\tMax length: %d' % max_actual_length)
     return id_list
 
 
@@ -271,10 +279,26 @@ def flatten_2D(data_list):
     flat_list = []
     for i in range(num_data):
         data = data_list[i]
-        num_element = 0
+        num_element = len(data)
         for j in range(num_element):
             flat_list.append(data[j])
     return flat_list
+
+
+def optimistic_restore(session, save_file):
+    reader = tf.train.NewCheckpointReader(save_file)
+    saved_shapes = reader.get_variable_to_shape_map()
+    var_names = sorted([(var.name, var.name.split(':')[0]) for var in tf.global_variables() if var.name.split(':')[0] in saved_shapes])
+    restore_vars = []
+    name2var = dict(zip(map(lambda x:x.name.split(':')[0], tf.global_variables()), tf.global_variables()))
+    with tf.variable_scope('', reuse=True):
+        for var_name, saved_var_name in var_names:
+            curr_var = name2var[saved_var_name]
+            var_shape = curr_var.get_shape().as_list()
+            if var_shape == saved_shapes[saved_var_name]:
+                restore_vars.append(curr_var)
+    saver = tf.train.Saver(restore_vars)
+    saver.restore(session, save_file)
 
 
 if __name__ == '__main__':
