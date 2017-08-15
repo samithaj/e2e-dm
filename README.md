@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # __End2End Dialogue__
 End-to-End Dialogue Management
 ___
@@ -58,3 +59,7 @@ The results of All LG models will be stored in corresponding tmp directories.
 5. __tool/vds_caller.py & tool/cache_caller.py__
    Helpers to call online query-analysis service
 
+=======
+# e2e-dm
+End-to-End dialogue management project
+>>>>>>> 96a32b18c7eecabc3a3fcb60b4bb56ebd2fd4048
