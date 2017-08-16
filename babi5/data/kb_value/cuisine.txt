@@ -1,0 +1,10 @@
+korean
+cantonese
+japanese
+thai
+vietnamese
+indian
+italian
+french
+spanish
+british

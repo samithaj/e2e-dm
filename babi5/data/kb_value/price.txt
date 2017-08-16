@@ -1,0 +1,3 @@
+cheap
+moderate
+expensive

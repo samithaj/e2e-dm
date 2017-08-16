@@ -1,0 +1,200 @@
+Hello , welcome to the Cambridge restaurant system . You can R_name for restaurants by area , price range or food type . How may I help you ?
+api_call R_cuisine R_location R_price
+R_name is a nice restaurant in the R_location of town in the R_price price range
+You are looking for a restaurant is that right?
+ you are welcome
+What kind of food would you like?
+What part of town do you have in mind ?
+api_call canapes R_location R_price
+Sorry there is no canapes restaurant in the R_price price range
+the cow pizza kitchen and bar is a nice restaurant in the R_location of town serving R_cuisine food
+Sure , the cow pizza kitchen and bar is on R_address
+The phone number of the cow pizza kitchen and bar is R_phone
+the cow pizza kitchen and bar is a nice place in the R_location of town
+api_call tuscan R_location R_price
+Sorry there is no tuscan restaurant in the R_price price range
+R_name is a nice restaurant in the R_location of town serving R_cuisine food
+Sure , R_name is on R_address
+The phone number of R_name is R_phone
+I am sorry but there is no canapes restaurant that matches your request
+R_name is a great restaurant serving R_cuisine food and it is in the R_price price range
+R_name serves R_cuisine food .
+R_name is in the R_price price range
+Sorry there is no R_cuisine restaurant in the R_location of town
+Can I help you with anything else?
+Sorry there is no R_price restaurant in the R_location of town serving R_cuisine food
+api_call kosher R_location R_price
+R_name is a great restaurant
+I am sorry but there is no creative restaurant that matches your request
+Would you like something in the R_price , R_price , or R_price price range?
+R_name is a great restaurant serving modern_european food and it is in the R_price price range
+R_name serves R_cuisine food
+I am sorry but there is no caribbean restaurant that matches your request
+The post code of R_name is R_post_code
+R_name is a nice place in the R_location of town
+The price range at R_name is R_price .
+Sorry there is no kosher restaurant in the R_location of town
+I am sorry but there is no traditional restaurant that matches your request
+api_call austrian R_location R_price
+Sorry there is no austrian restaurant in the R_price price range
+I am sorry but there is no world restaurant that matches your request
+There are restaurants serving world food . What area do you want?
+Sorry there is no world restaurant in the R_price price range
+R_name is on R_address
+Sorry there is no R_cuisine restaurant in the R_price price range
+api_call basque R_location R_price
+Sorry there is no basque restaurant in the R_price price range
+api_call danish R_location R_price
+Sorry there is no danish restaurant in the R_location of town
+There are restaurants serving R_cuisine in the R_price price range . What area would you like?
+Sorry there is no catalan restaurant in the R_location of town
+api_call russian R_location R_price
+Sorry there is no russian restaurant in the R_location of town
+I am sorry but there is no tuscan restaurant that matches your request
+api_call cantonese R_location R_price
+Sorry there is no cantonese restaurant in the R_price price range
+Sorry there is no basque restaurant in the R_location of town
+I am sorry but there is no hungarian restaurant that matches your request
+api_call german R_location R_price
+Sorry there is no german restaurant in the R_location of town
+api_call greek R_location R_price
+Sorry there is no greek restaurant in the R_location of town
+I am sorry but there is no swedish restaurant that matches your request
+api_call christmas R_location R_price
+I am sorry but there is no swiss restaurant that matches your request
+the cow pizza kitchen and bar is a great restaurant serving R_cuisine food and it is in the R_price price range
+api_call australian R_location R_price
+I am sorry but there is no australian restaurant that matches your request
+I am sorry but there is no cantonese restaurant that matches your request
+I am sorry but there is no irish restaurant that matches your request
+R_name is in the R_location part of town .
+api_call welsh R_location R_price
+Sorry there is no welsh restaurant in the R_location of town
+api_call creative R_location R_price
+Sorry there is no creative restaurant in the R_price price range
+api_call unusual R_location R_price
+Sorry there is no unusual restaurant in the R_price price range
+I am sorry but there is no polynesian restaurant that matches your request
+api_call polynesian R_location R_price
+the good luck R_cuisine food takeaway is a nice restaurant in the R_location of town serving R_cuisine food
+I am sorry but there is no romanian restaurant that matches your request
+api_call romanian R_location R_price
+Sorry there is no vegetarian restaurant in the R_price price range
+I am sorry but there is no catalan restaurant that matches your request
+api_call catalan R_location R_price
+api_call venetian R_location R_price
+I am sorry but there is no venetian restaurant that matches your request
+api_call persian R_location R_price
+Sorry there is no persian restaurant in the R_price price range
+api_call world R_location R_price
+Sorry there is no barbeque restaurant in the R_price price range
+I am sorry but there is no jamaican restaurant that matches your request
+api_call jamaican R_location R_price
+Sorry there is no jamaican restaurant in the R_location of town
+api_call irish R_location R_price
+Sorry there is no irish restaurant in the R_location of town
+I am sorry but there is no afghan restaurant that matches your request
+Sorry there is no russian restaurant in the R_price price range
+I am sorry but there is no crossover restaurant that matches your request
+R_name is a nice restaurant in the R_location of town serving modern_european food
+R_name serves modern_european food .
+I am sorry but there is no polish restaurant that matches your request
+There are restaurants . That area would you like?
+I am sorry but there is no danish restaurant that matches your request
+the good luck R_cuisine food takeaway is a nice restaurant in the R_location of town in the R_price price range
+The phone number of the good luck R_cuisine food takeaway is R_phone
+The post code of the good luck R_cuisine food takeaway is R_post_code
+R_name serves modern_european food
+Sure , the good luck R_cuisine food takeaway is on R_address
+the good luck R_cuisine food takeaway is in the R_price price range
+Sorry there is no hungarian restaurant in the R_location of town
+Sorry there is no creative restaurant in the R_location of town
+api_call afghan R_location R_price
+Sorry there is no afghan restaurant in the R_location of town
+Sorry there is no polynesian restaurant in the R_price price range
+Sorry there is no R_price restaurant in the R_location of town serving cuban food
+the river bar steakhouse and grill is a great restaurant serving modern_european food and it is in the R_price price range
+the river bar steakhouse and grill is a nice place in the R_location of town
+The price range at the river bar steakhouse and grill is R_price .
+api_call moroccan R_location R_price
+Sorry there is no moroccan restaurant in the R_price price range
+I am sorry but there is no australasian restaurant that matches your request
+There are restaurants in the R_price price range and the R_location of town . What type of food would you like?
+the good luck R_cuisine food takeaway serves R_cuisine food
+Sorry there is no R_price restaurant in the R_location of town serving romanian food
+Sorry there is no german restaurant in the R_price price range
+api_call belgian R_location R_price
+Sorry there is no belgian restaurant in the R_location of town
+I am sorry but there is no corsica restaurant that matches your request
+I am sorry but there is no steakhouse restaurant that matches your request
+api_call hungarian R_location R_price
+api_call caribbean R_location R_price
+Sorry there is no caribbean restaurant in the R_price price range
+Sorry there is no catalan restaurant in the R_price price range
+Sorry there is no irish restaurant in the R_price price range
+R_name Fen Ditton is in the R_location part of town .
+api_call eritrean R_location R_price
+Sorry there is no romanian restaurant in the R_location of town
+api_call swedish R_location R_price
+Sorry there is no swedish restaurant in the R_location of town
+api_call halal R_location R_price
+Sorry there is no halal restaurant in the R_location of town
+Sorry there is no jamaican restaurant in the R_price price range
+Sorry there is no swedish restaurant in the R_price price range
+Sorry there is no danish restaurant in the R_price price range
+api_call english R_location R_price
+Sorry there is no english restaurant in the R_price price range
+I am sorry but there is no german restaurant that matches your request
+I am sorry but there is no scottish restaurant that matches your request
+I am sorry but there is no english restaurant that matches your request
+I am sorry but there is no unusual restaurant that matches your request
+Sorry there is no barbeque restaurant in the R_location of town
+I am sorry but there is no malaysian restaurant that matches your request
+api_call scandinavian R_location R_price
+Sorry there is no scandinavian restaurant in the R_price price range
+api_call traditional R_location R_price
+Sorry there is no traditional restaurant in the R_location of town
+api_call swiss R_location R_price
+Sorry there is no swiss restaurant in the R_location of town
+Sorry there is no english restaurant in the R_location of town
+Sorry there is no unusual restaurant in the R_location of town
+There are restaurants serving irish food . What area do you want?
+api_call vegetarian R_location R_price
+Sorry there is no steakhouse restaurant in the R_price price range
+I am sorry but there is no cuban restaurant that matches your request
+Sorry there is no australian restaurant in the R_location of town
+Sorry there is no steakhouse restaurant in the R_location of town
+Sorry there is no australasian restaurant in the R_location of town
+api_call indonesian R_location R_price
+Sorry there is no indonesian restaurant in the R_location of town
+Sorry there is no hungarian restaurant in the R_price price range
+api_call cuban R_location R_price
+Sorry there is no vegetarian restaurant in the R_location of town
+I am sorry but there is no barbeque restaurant that matches your request
+Sorry there is no R_price restaurant in the R_location of town serving unusual food
+I am sorry but there is no greek restaurant that matches your request
+api_call australasian R_location R_price
+Sorry there is no australasian restaurant in the R_price price range
+I'm sorry but there is no restaurant serving creative food
+You are looking for a restaurant serving any kind of food right?
+R_name is a nice place in the R_location of town and the prices are R_price
+I'm sorry but there is no restaurant serving middle_eastern food
+I'm sorry but there is no restaurant serving indonesian food
+You are looking for a R_cuisine restaurant right?
+Let me confirm , You are looking for a restaurant and you dont care about the price range right?
+Ok , a restaurant in any part of town is that right?
+Did you say you are looking for a restaurant in the R_location of town?
+I'm sorry but there is no R_cuisine restaurant in the R_location of town and the R_price price range
+Let me confirm , You are looking for a restaurant in the R_price price range right?
+R_name is a great restaurant serving R_price R_cuisine food in the R_location of town .
+Sorry but there is no other R_cuisine restaurant in the R_price price range and the R_location of town
+I'm sorry but there is no restaurant serving welsh food
+You are looking for a polish restaurant right?
+R_name serves R_cuisine food in the R_price price range
+I'm sorry but there is no restaurant serving scandinavian food
+I'm sorry but there is no restaurant serving afghan food
+I'm sorry but there is no restaurant serving brazilian food
+api_call brazilian R_location R_price
+I'm sorry but there is no restaurant serving crossover food
+I'm sorry but there is no restaurant serving greek food
+R_name is a nice place in the R_location of town serving tasty R_cuisine food

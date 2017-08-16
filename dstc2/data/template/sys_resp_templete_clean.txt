@@ -1,0 +1,31 @@
+I am sorry but there is no R_cuisine restaurant that matches your request
+Could you please repeat that?
+I am sorry but there is no other R_cuisine restaurant in the R_location of town
+I am sorry but there is no other R_cuisine restaurant in the R_price price range
+I am sorry but there is no other R_cuisine restaurant that matches your request
+I'm sorry but there is no R_cuisine restaurant in the R_location of town
+I'm sorry but there is no restaurant serving R_cuisine food
+I'm sorry but there is no restaurant serving R_price R_cuisine food
+Sorry I am a bit confused ; please tell me again what you are looking for .
+Sorry but there is no other restaurant in the R_price price range and the R_location of town
+Sorry would you like R_cuisine food or you dont care
+Sorry would you like R_cuisine or R_cuisine food?
+Sorry would you like something in the R_location or in the R_location
+Sorry would you like something in the R_price price range or in the R_price price range
+Sorry would you like something in the R_price price range or you dont care
+Sorry would you like the R_location of town or you dont care
+Sorry, I can't hear you
+There are restaurants if you don't care about the area or the type of food . What price range would you like?
+There are restaurants if you don't care about the food . What area do you want?
+There are restaurants if you don't care about the food . What price range do you want?
+There are restaurants in all parts of town . What type of food do you want?
+There are restaurants in all parts of town . What type of price range do you want?
+There are restaurants in the R_location of town . What type of food do you want?
+There are restaurants in the R_location of town serving any kind of food . What price range would you like?
+There are restaurants in the R_price price range . What area do you want?There are restaurants in the R_price price range . What type of food do you want?
+There are restaurants serving R_cuisine food . What area do you want?
+There are restaurants serving R_cuisine food . What price range do you want?
+There are restaurants serving R_cuisine food in any part of town . What price range would you like?
+There are restaurants serving R_cuisine in any price range . What area would you like?
+There are restaurants serving R_cuisine in the R_location of town . What price range would you like?
+There are restaurants serving any kind of food in the R_price price range . What area would you like?

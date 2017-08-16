@@ -1,0 +1,80 @@
+#   1   hello
+1   Hello , welcome to the Cambridge restaurant system . You can R_name for restaurants by area , price range or food type . How may I help you ?
+
+#   2	api
+2   api_call R_cuisine R_location R_price
+
+#   3	recommend (R_cuisine, R_price, R_location)
+3   R_name is a great restaurant
+3	R_name is a great restaurant serving R_cuisine food and it is in the R_price price range
+3	R_name is a nice place in the R_location of town
+3	R_name is a nice place in the R_location of town
+3	R_name is a nice restaurant in the R_location of town in the R_price price range
+3	R_name is a nice restaurant in the R_location of town serving R_cuisine food
+3	R_name serves R_cuisine food
+3   R_name is a nice place in the R_location of town serving tasty R_cuisine food
+3   R_name serves R_cuisine food in the R_price price range
+
+#   4	confirm_intent
+4	You are looking for a restaurant is that right?
+
+#   5	you are welcome
+5	you are welcome
+
+#   6	request_food
+6	What kind of food would you like?
+6	There are restaurants in the R_price price range and the R_location of town . What type of food would you like?
+6	R_name is a nice place in the R_location of town and the prices are R_price
+7	There are restaurants serving [irish] food . What area do you want?
+
+#   7	request_area
+7	There are restaurants serving R_cuisine in the R_price price range . What area would you like?
+7	There are restaurants . That area would you like?
+7	What part of town do you have in mind ?
+
+
+#   8	no_result (R_cuisine, R_price, R_location)
+8	I am sorry but there is no [afghan] restaurant that matches your request
+8	I'm sorry but there is no restaurant serving [middle_eastern] food
+8	Sorry there is no R_cuisine restaurant in the R_location of town
+8	Sorry there is no R_cuisine restaurant in the R_price price range
+8	Sorry there is no R_price restaurant in the R_location of town serving R_cuisine food
+8   Sorry but there is no other R_cuisine restaurant in the R_price price range and the R_location of town
+8   I'm sorry but there is no R_cuisine restaurant in the R_location of town and the R_price price range
+8   I'm sorry but there is no restaurant serving afghan food
+
+#   9	inform_address
+9   R_name is in the R_location part of town .
+9	R_name is on R_address
+9	Sure , R_name is on R_address
+
+#   10	inform_phone
+10	The phone number of R_name is R_phone
+
+#   11	inform_food
+11	R_name serves R_cuisine food .
+
+#   12	inform_price
+12	R_name is in the R_price price range
+12	The price range at R_name is R_price .
+12  [the good luck] R_cuisine food takeaway is in the R_price price range
+
+#   13	offer_help
+13	Can I help you with anything else?
+
+#   14	request_price
+14	Would you like something in the R_price , R_price , or R_price price range?
+
+#   15	inform_post
+15	The post code of R_name is R_post_code
+
+#   16	confirm_food
+16	You are looking for a R_cuisine restaurant right?
+
+#   17	confirm_price
+17  Let me confirm , You are looking for a restaurant and you dont care about the price range right?
+17  Let me confirm , You are looking for a restaurant in the R_price price range right?
+
+#   18	confirm_area
+18  Did you say you are looking for a restaurant in the R_location of town?
+18  Ok , a restaurant in any part of town is that right?

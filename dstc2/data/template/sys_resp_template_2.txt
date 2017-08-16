@@ -1,0 +1,253 @@
+I'm sorry but there is no restaurant serving venetian food
+I'm sorry but there is no restaurant serving polynesian food
+I'm sorry but there is no restaurant serving vegetarian food
+I'm sorry but there is no restaurant serving caribbean food
+I'm sorry but there is no R_cuisine restaurant in the R_location of town
+I'm sorry but there is no restaurant serving malaysian food
+I'm sorry but there is no restaurant serving danish food
+I'm sorry but there is no restaurant serving polish food
+I'm sorry but there is no restaurant serving the_americas food
+I am sorry but there is no other R_cuisine restaurant in the R_price price range
+You are looking for a polynesian restaurant right?
+Sorry would you like something in the R_price price range or in the R_price price range
+Sorry but there is no other restaurant in the R_price price range and the R_location of town
+Sorry would you like something in the R_location or in the R_location
+Sorry would you like something in the R_price price range or you dont care
+
+You are looking for a greek restaurant right?
+the good luck R_cuisine food takeaway is a nice place in the R_location of town and the prices are R_price
+
+You are looking for a the_americas restaurant right?
+R_name is in the R_location , at C.B 2, 1 U.F
+I'm sorry but there is no restaurant serving corsica food
+I'm sorry but there is no restaurant serving english food
+You are looking for a english restaurant right?
+I am sorry but there is no other R_cuisine restaurant in the R_location of town
+I'm sorry but there is no restaurant serving unusual food
+I'm sorry but there is no restaurant serving R_price R_cuisine food
+Sorry would you like R_cuisine or polynesian food?
+Sorry would you like polynesian or R_cuisine food?
+I'm sorry but there is no restaurant serving scottish food
+R_name is in the R_price price range , and their post code is C.B 2, 1 D.P
+I'm sorry but there is no restaurant serving russian food
+I'm sorry but there is no restaurant serving R_cuisine food
+Sorry would you like R_cuisine or R_cuisine food?
+I'm sorry but there is no restaurant serving steakhouse food
+You are looking for a steakhouse restaurant right?
+I'm sorry but there is no restaurant serving belgian food
+the cow pizza kitchen and bar serves R_cuisine food in the R_price price range
+the cow pizza kitchen and bar is a great restaurant
+The post code of the cow pizza kitchen and bar is R_post_code
+R_name is in the R_price price range , and their post code is C.B 4, 3 L.E
+I'm sorry but there is no restaurant serving swedish food
+the good luck R_cuisine food takeaway is a nice place in the R_location of town
+I'm sorry but there is no restaurant serving german food
+Sorry would you like R_cuisine or english food?
+You are looking for a halal restaurant right?
+I'm sorry but there is no restaurant serving halal food
+I'm sorry but there is no restaurant serving traditional food
+R_name serves modern_european food in the R_price price range
+I am sorry but there is no other R_cuisine restaurant that matches your request
+R_name Fen Ditton is in the R_price price range
+I'm sorry but there is no restaurant serving world food
+I'm sorry but there is no restaurant serving moroccan food
+You are looking for a moroccan restaurant right?
+the cow pizza kitchen and bar serves R_cuisine food
+I'm sorry but there is no restaurant serving canapes food
+the cow pizza kitchen and bar is in the R_price price range
+You are looking for a creative restaurant right?
+You are looking for a cantonese restaurant right?
+I'm sorry but there is no restaurant serving cantonese food
+Sorry I am a bit confused ; please tell me again what you are looking for .
+You are looking for a world restaurant right?
+I'm sorry but there is no restaurant serving christmas food
+I'm sorry but there is no restaurant serving cuban food
+Sorry would you like jamaican food or you dont care
+I'm sorry but there is no restaurant serving jamaican food
+Sorry would you like world or jamaican food?
+the good luck R_cuisine food takeaway is a nice place in the R_location of town serving tasty R_cuisine food
+the good luck R_cuisine food takeaway is on R_address
+I'm sorry but there is no restaurant serving romanian food
+api_call malaysian R_location R_price
+I'm sorry but there is no restaurant serving tuscan food
+You are looking for a indonesian restaurant right?
+I'm sorry but there is no restaurant serving australian food
+You are looking for a malaysian restaurant right?
+Sorry would you like the R_location of town or you dont care
+I'm sorry but there is no restaurant serving barbeque food
+Sorry would you like crossover or modern_european food?
+Sorry would you like crossover food or you dont care
+You are looking for a christmas restaurant right?
+You are looking for a afghan restaurant right?
+Sorry would you like danish or english food?
+I'm sorry but there is no restaurant serving swiss food
+I'm sorry but there is no restaurant serving singaporean food
+I'm sorry but there is no restaurant serving irish food
+You are looking for a irish restaurant right?
+I'm sorry but there is no restaurant serving panasian food
+api_call steakhouse R_location R_price
+I'm sorry but there is no restaurant serving austrian food
+You are looking for a jamaican restaurant right?
+the river bar steakhouse and grill is in the R_price price range
+You are looking for a cuban restaurant right?
+the river bar steakhouse and grill serves modern_european food
+the river bar steakhouse and grill is a great restaurant
+Sure , the river bar steakhouse and grill is on R_address
+You are looking for a swiss restaurant right?
+Sorry would you like R_cuisine or greek food?
+I'm sorry but there is no restaurant serving basque food
+You are looking for a traditional restaurant right?
+You are looking for a swedish restaurant right?
+You are looking for a german restaurant right?
+Sorry would you like R_cuisine or german food?
+You are looking for a romanian restaurant right?
+Sorry would you like R_cuisine or romanian food?
+The phone number of the river bar steakhouse and grill is R_phone
+Sorry would you like R_cuisine or corsica food?
+You are looking for a danish restaurant right?
+You are looking for a barbeque restaurant right?
+Sorry would you like unusual or R_cuisine food?
+api_call singaporean R_location R_price
+api_call corsica R_location R_price
+You are looking for a panasian restaurant right?
+Sorry would you like cantonese or halal food?
+Sorry would you like world or R_cuisine food?
+I'm sorry but there is no restaurant serving hungarian food
+You are looking for a hungarian restaurant right?
+Sorry would you like scottish or corsica food?
+Sorry would you like modern_european or christmas food?
+Sorry would you like R_cuisine or afghan food?
+You are looking for a canapes restaurant right?
+You are looking for a tuscan restaurant right?
+You are looking for a singaporean restaurant right?
+You are looking for a venetian restaurant right?
+You are looking for a unusual restaurant right?
+I'm sorry but there is no restaurant serving kosher food
+You are looking for a modern_european restaurant right?
+the good luck R_cuisine food takeaway is a great restaurant
+Sorry would you like R_cuisine or world food?
+I'm sorry but there is no restaurant serving persian food
+I'm sorry but there is no restaurant serving catalan food
+You are looking for a basque restaurant right?
+You are looking for a brazilian restaurant right?
+Sorry would you like R_cuisine or brazilian food?
+Sorry would you like creative or R_cuisine food?
+I'm sorry but there is no restaurant serving australasian food
+Sorry, I can't hear you
+the river bar steakhouse and grill serves modern_european food in the R_price price range
+The post code of the river bar steakhouse and grill is R_post_code
+R_name is a nice place in the R_location of town serving tasty modern_european food
+You are looking for a corsica restaurant right?
+Sorry would you like modern_european or R_cuisine food?
+Sorry would you like R_cuisine or belgian food?
+Sorry would you like R_cuisine or basque food?
+Sorry would you like R_cuisine or vegetarian food?
+the river bar steakhouse and grill is a nice place in the R_location of town and the prices are R_price
+Sorry would you like romanian or R_cuisine food?
+Sorry would you like modern_european or cuban food?
+I am sorry but there is no other modern_european restaurant in the R_price price range
+Sorry would you like corsica or R_cuisine food?
+You are looking for a persian restaurant right?
+You are looking for a welsh restaurant right?
+Sorry would you like R_cuisine food or you dont care
+Sorry would you like cuban or R_cuisine food?
+You are looking for a scottish restaurant right?
+Sorry would you like R_cuisine or russian food?
+You are looking for a austrian restaurant right?
+Sorry would you like R_cuisine or christmas food?
+You are looking for a scandinavian restaurant right?
+Sorry would you like scandinavian or R_cuisine food?
+Sorry would you like russian or R_cuisine food?
+Sorry would you like venetian or R_cuisine food?
+You are looking for a catalan restaurant right?
+You are looking for a australasian restaurant right?
+Sorry there is no cuban restaurant in the R_location of town
+Sorry there is no corsica restaurant in the R_location of town
+I am sorry but there is no christmas restaurant that matches your request
+I am sorry but there is no vegetarian restaurant that matches your request
+I am sorry but there is no welsh restaurant that matches your request
+Sorry there is no brazilian restaurant in the R_price price range
+Sorry there is no polynesian restaurant in the R_location of town
+Sorry there is no corsica restaurant in the R_price price range
+Sorry there is no R_price restaurant in the R_location of town serving kosher food
+Sorry there is no kosher restaurant in the R_price price range
+I am sorry but there is no R_cuisine restaurant that matches your request
+R_name Fen Ditton is a nice restaurant in the R_location of town in the R_price price range
+The price range at R_name Fen Ditton is R_price .
+Sorry there is no halal restaurant in the R_price price range
+Sorry there is no christmas restaurant in the R_location of town
+Sorry there is no austrian restaurant in the R_location of town
+Sorry there is no belgian restaurant in the R_price price range
+Sorry there is no australian restaurant in the R_price price range
+I am sorry but there is no belgian restaurant that matches your request
+Sorry there is no cuban restaurant in the R_price price range
+I am sorry but there is no scandinavian restaurant that matches your request
+Sorry there is no venetian restaurant in the R_price price range
+Sorry there is no malaysian restaurant in the R_price price range
+There are restaurants serving tuscan in the R_price price range . What area would you like?
+Sorry there is no greek restaurant in the R_price price range
+The price range at the good luck R_cuisine food takeaway is R_price .
+Sorry there is no R_price restaurant in the R_location of town serving halal food
+Sorry there is no caribbean restaurant in the R_location of town
+api_call scottish R_location R_price
+Sorry there is no scottish restaurant in the R_price price range
+Sorry there is no the_americas restaurant in the R_location of town
+Sorry there is no panasian restaurant in the R_location of town
+I am sorry but there is no brazilian restaurant that matches your request
+Sorry there is no world restaurant in the R_location of town
+Sorry there is no persian restaurant in the R_location of town
+Sorry there is no scandinavian restaurant in the R_location of town
+I am sorry but there is no austrian restaurant that matches your request
+Sorry there is no tuscan restaurant in the R_location of town
+There are restaurants serving christmas food . What area do you want?
+api_call polish R_location R_price
+Sorry there is no eritrean restaurant in the R_location of town
+Sorry there is no polish restaurant in the R_location of town
+Sorry there is no cantonese restaurant in the R_location of town
+Sorry there is no polish restaurant in the R_price price range
+Sorry there is no R_price restaurant in the R_location of town serving australian food
+Sorry there is no swiss restaurant in the R_price price range
+I am sorry but there is no persian restaurant that matches your request
+Sorry there is no afghan restaurant in the R_price price range
+Could you please repeat that?
+There are restaurants serving R_cuisine in the R_location of town . What price range would you like?
+You are looking for a australian restaurant right?
+There are restaurants in the R_location of town serving any kind of food . What price range would you like?
+There are restaurants serving R_cuisine food . What area do you want?
+There are restaurants serving R_cuisine food in any part of town . What price range would you like?
+There are restaurants in the R_location of town . What type of food do you want?
+There are restaurants in the R_price price range . What type of food do you want?
+There are restaurants if you don't care about the food . What area do you want?
+There are restaurants if you don't care about the area or the type of food . What price range would you like?
+I'm sorry but there is no restaurant serving northern_european food
+There are restaurants serving any kind of food in the R_price price range . What area would you like?
+There are restaurants if you don't care about the food . What price range do you want?
+R_name is in the R_price price range , and their post code is C.B 1, 3 N.F
+There are restaurants serving modern_european in the R_location of town . What price range would you like?
+There are restaurants serving R_cuisine food . What price range do you want?
+There are restaurants serving R_cuisine in any price range . What area would you like?
+You are looking for a belgian restaurant right?
+You are looking for a crossover restaurant right?
+I'm sorry but there is no restaurant serving eritrean food
+The address of R_name is 7 Milton Road Chesterton .
+R_name Fen Ditton is a great restaurant
+There are restaurants in all parts of town . What type of food do you want?
+You are looking for a vegetarian restaurant right?
+The address of R_name is 529 Newmarket Road Fen Ditton .
+the good luck R_cuisine food takeaway is a great restaurant serving R_price R_cuisine food in the R_location of town .
+You are looking for a caribbean restaurant right?
+You are looking for a kosher restaurant right?
+R_name Fen Ditton is a nice place in the R_location of town
+Sure , R_name Fen Ditton is on pizza_express_Fen_Ditton_address
+You are looking for a eritrean restaurant right?
+There are restaurants serving modern_european food in any part of town . What price range would you like?
+R_name is a good restaurant on 108 Regent Street City Centre and it is in the R_price price range
+There are restaurants serving modern_european food . What area do you want?
+There are restaurants in all parts of town . What type of pricerange do you want?
+There are restaurants serving modern_european food . What price range do you want?
+There are restaurants serving modern_european in the R_price price range . What area would you like?
+You are looking for a russian restaurant right?
+The address of R_name is 17 Magdalene Street City Centre .
+R_name is a great restaurant serving R_cuisine food . Their phone number is 01223 323737 .
+R_name is a great restaurant serving R_price modern_european food in the R_location of town .
+There are restaurants in the R_price price range . What area do you want?

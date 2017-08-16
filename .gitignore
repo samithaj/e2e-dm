@@ -1,3 +1,7 @@
-tmp
+babi5/tmp
+dstc2/tmp
 .idea
-*.pyc
+babi5/*.pyc
+dstc2/*.pyc
+babi5/tool/*.pyc
+dstc2/tool/*.pyc

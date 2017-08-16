@@ -1,0 +1,451 @@
+1	Hello , welcome to the Cambridge restaurant system . You can ask for restaurants by area , price range or food type . How may I help you ?
+2	api_call R_cuisine R_location R_price
+2	api_call afghan R_location R_price
+2	api_call australasian R_location R_price
+2	api_call australian R_location R_price
+2	api_call austrian R_location R_price
+2	api_call basque R_location R_price
+2	api_call belgian R_location R_price
+2	api_call canapes R_location R_price
+2	api_call cantonese R_location R_price
+2	api_call caribbean R_location R_price
+2	api_call catalan R_location R_price
+2	api_call christmas R_location R_price
+2	api_call creative R_location R_price
+2	api_call cuban R_location R_price
+2	api_call danish R_location R_price
+2	api_call english R_location R_price
+2	api_call eritrean R_location R_price
+2	api_call german R_location R_price
+2	api_call greek R_location R_price
+2	api_call halal R_location R_price
+2	api_call hungarian R_location R_price
+2	api_call indonesian R_location R_price
+2	api_call irish R_location R_price
+2	api_call jamaican R_location R_price
+2	api_call kosher R_location R_price
+2	api_call moroccan R_location R_price
+2	api_call persian R_location R_price
+2	api_call polynesian R_location R_price
+2	api_call romanian R_location R_price
+2	api_call russian R_location R_price
+2	api_call scandinavian R_location R_price
+2	api_call swedish R_location R_price
+2	api_call swiss R_location R_price
+2	api_call traditional R_location R_price
+2	api_call tuscan R_location R_price
+2	api_call unusual R_location R_price
+2	api_call vegetarian R_location R_price
+2	api_call venetian R_location R_price
+2	api_call welsh R_location R_price
+2	api_call world R_location R_price
+2	api_call brazilian R_location R_price
+2	api_call corsica R_location R_price
+2	api_call malaysian R_location R_price
+2	api_call polish R_location R_price
+2	api_call scottish R_location R_price
+2	api_call singaporean R_location R_price
+2	api_call steakhouse R_location R_price
+3	R_name is a great restaurant
+3	R_name is a great restaurant serving R_cuisine food and it is in the R_price price range
+3	R_name is a great restaurant serving modern_european food and it is in the R_price price range
+3	R_name is a nice place in the R_location of town
+3	R_name is a nice place in the R_location of town and the prices are R_price
+3	R_name is a nice restaurant in the R_location of town in the R_price price range
+3	R_name is a nice restaurant in the R_location of town serving R_cuisine food
+3	R_name is a nice restaurant in the R_location of town serving modern_european food
+3	R_name Fen Ditton is a great restaurant
+3	R_name Fen Ditton is a nice place in the R_location of town
+3	R_name Fen Ditton is a nice restaurant in the R_location of town in the R_price price range
+3	R_name is a good restaurant on 108 Regent Street City Centre and it is in the R_price price range
+3	R_name is a great restaurant serving R_cuisine food . Their phone number is 01223 323737 .
+3	R_name is a great restaurant serving R_price modern_european food in the R_location of town .
+3	R_name is a nice place in the R_location of town serving tasty modern_european food
+3	R_name serves modern_european food in the R_price price range
+3	R_name serves R_cuisine food
+3	R_name serves modern_european food
+3	R_name serves modern_european food .
+3	the cow pizza kitchen and bar is a great restaurant
+3	the cow pizza kitchen and bar is a great restaurant serving R_cuisine food and it is in the R_price price range
+3	the cow pizza kitchen and bar is a nice place in the R_location of town
+3	the cow pizza kitchen and bar is a nice restaurant in the R_location of town serving R_cuisine food
+3	the good luck R_cuisine food takeaway is a nice restaurant in the R_location of town in the R_price price range
+3	the good luck R_cuisine food takeaway is a nice restaurant in the R_location of town serving R_cuisine food
+3	the good luck R_cuisine food takeaway serves R_cuisine food
+3	the river bar steakhouse and grill is a great restaurant serving modern_european food and it is in the R_price price range
+3	the river bar steakhouse and grill is a nice place in the R_location of town
+3	R_name is a great restaurant serving R_price R_cuisine food in the R_location of town .
+3	R_name is a nice place in the R_location of town serving tasty R_cuisine food
+3	R_name serves R_cuisine food in the R_price price range
+3	the cow pizza kitchen and bar serves R_cuisine food
+3	the cow pizza kitchen and bar serves R_cuisine food in the R_price price range
+3	the good luck R_cuisine food takeaway is a great restaurant
+3	the good luck R_cuisine food takeaway is a great restaurant serving R_price R_cuisine food in the R_location of town .
+3	the good luck R_cuisine food takeaway is a nice place in the R_location of town
+3	the good luck R_cuisine food takeaway is a nice place in the R_location of town and the prices are R_price
+3	the good luck R_cuisine food takeaway is a nice place in the R_location of town serving tasty R_cuisine food
+3	the river bar steakhouse and grill is a great restaurant
+3	the river bar steakhouse and grill is a nice place in the R_location of town and the prices are R_price
+3	the river bar steakhouse and grill serves modern_european food
+3	the river bar steakhouse and grill serves modern_european food in the R_price price range
+4	You are looking for a restaurant is that right?
+4	Could you please repeat that?
+4	Sorry I am a bit confused ; please tell me again what you are looking for .
+4	Sorry, I can't hear you
+5	 you are welcome
+6	There are restaurants in the R_price price range and the R_location of town . What type of food would you like?
+6	What kind of food would you like?
+6	There are restaurants in all parts of town . What type of food do you want?
+6	There are restaurants in the R_location of town . What type of food do you want?
+6	There are restaurants in the R_price price range . What type of food do you want?
+7	There are restaurants . That area would you like?
+7	There are restaurants serving R_cuisine in the R_price price range . What area would you like?
+7	There are restaurants serving irish food . What area do you want?
+7	There are restaurants serving world food . What area do you want?
+7	There are restaurants if you don't care about the food . What area do you want?
+7	What part of town do you have in mind ?
+7	There are restaurants serving R_cuisine food . What area do you want?
+7	There are restaurants in the R_price price range . What area do you want?
+7	There are restaurants serving christmas food . What area do you want?
+7	There are restaurants serving modern_european food . What area do you want?
+7	There are restaurants serving R_cuisine in any price range . What area would you like?
+7	There are restaurants serving any kind of food in the R_price price range . What area would you like?
+7	There are restaurants serving modern_european in the R_price price range . What area would you like?
+7	There are restaurants serving tuscan in the R_price price range . What area would you like?
+8	I am sorry but there is no R_cuisine restaurant that matches your request
+8	I am sorry but there is no austrian restaurant that matches your request
+8	I am sorry but there is no afghan restaurant that matches your request
+8	I am sorry but there is no australasian restaurant that matches your request
+8	I am sorry but there is no australian restaurant that matches your request
+8	I am sorry but there is no barbeque restaurant that matches your request
+8	I am sorry but there is no belgian restaurant that matches your request
+8	I am sorry but there is no brazilian restaurant that matches your request
+8	I am sorry but there is no canapes restaurant that matches your request
+8	I am sorry but there is no cantonese restaurant that matches your request
+8	I am sorry but there is no caribbean restaurant that matches your request
+8	I am sorry but there is no catalan restaurant that matches your request
+8	I am sorry but there is no christmas restaurant that matches your request
+8	I am sorry but there is no corsica restaurant that matches your request
+8	I am sorry but there is no creative restaurant that matches your request
+8	I am sorry but there is no crossover restaurant that matches your request
+8	I am sorry but there is no cuban restaurant that matches your request
+8	I am sorry but there is no danish restaurant that matches your request
+8	I am sorry but there is no english restaurant that matches your request
+8	I am sorry but there is no german restaurant that matches your request
+8	I am sorry but there is no greek restaurant that matches your request
+8	I am sorry but there is no hungarian restaurant that matches your request
+8	I am sorry but there is no irish restaurant that matches your request
+8	I am sorry but there is no jamaican restaurant that matches your request
+8	I am sorry but there is no malaysian restaurant that matches your request
+8	I am sorry but there is no polish restaurant that matches your request
+8	I am sorry but there is no polynesian restaurant that matches your request
+8	I am sorry but there is no romanian restaurant that matches your request
+8	I am sorry but there is no scottish restaurant that matches your request
+8	I am sorry but there is no steakhouse restaurant that matches your request
+8	I am sorry but there is no swedish restaurant that matches your request
+8	I am sorry but there is no swiss restaurant that matches your request
+8	I am sorry but there is no traditional restaurant that matches your request
+8	I am sorry but there is no tuscan restaurant that matches your request
+8	I am sorry but there is no unusual restaurant that matches your request
+8	I am sorry but there is no venetian restaurant that matches your request
+8	I am sorry but there is no world restaurant that matches your request
+8	I am sorry but there is no other R_cuisine restaurant in the R_location of town
+8	I am sorry but there is no other R_cuisine restaurant in the R_price price range
+8	I am sorry but there is no other R_cuisine restaurant that matches your request
+8	I am sorry but there is no other modern_european restaurant in the R_price price range
+8	I am sorry but there is no persian restaurant that matches your request
+8	I am sorry but there is no scandinavian restaurant that matches your request
+8	I am sorry but there is no vegetarian restaurant that matches your request
+8	I am sorry but there is no welsh restaurant that matches your request
+8	I'm sorry but there is no restaurant serving creative food
+8	I'm sorry but there is no restaurant serving indonesian food
+8	I'm sorry but there is no restaurant serving middle_eastern food
+8	Sorry there is no R_cuisine restaurant in the R_location of town
+8	Sorry there is no R_cuisine restaurant in the R_price price range
+8	Sorry there is no R_price restaurant in the R_location of town serving R_cuisine food
+8	Sorry there is no R_price restaurant in the R_location of town serving cuban food
+8	Sorry there is no R_price restaurant in the R_location of town serving romanian food
+8	Sorry there is no R_price restaurant in the R_location of town serving unusual food
+8	Sorry there is no afghan restaurant in the R_location of town
+8	Sorry there is no australasian restaurant in the R_location of town
+8	Sorry there is no australasian restaurant in the R_price price range
+8	Sorry there is no australian restaurant in the R_location of town
+8	Sorry there is no austrian restaurant in the R_price price range
+8	Sorry there is no barbeque restaurant in the R_location of town
+8	Sorry there is no barbeque restaurant in the R_price price range
+8	Sorry there is no basque restaurant in the R_location of town
+8	Sorry there is no basque restaurant in the R_price price range
+8	Sorry there is no belgian restaurant in the R_location of town
+8	Sorry there is no canapes restaurant in the R_price price range
+8	Sorry there is no cantonese restaurant in the R_price price range
+8	Sorry there is no caribbean restaurant in the R_price price range
+8	Sorry there is no catalan restaurant in the R_location of town
+8	Sorry there is no catalan restaurant in the R_price price range
+8	Sorry there is no creative restaurant in the R_location of town
+8	Sorry there is no creative restaurant in the R_price price range
+8	Sorry there is no danish restaurant in the R_location of town
+8	Sorry there is no danish restaurant in the R_price price range
+8	Sorry there is no english restaurant in the R_location of town
+8	Sorry there is no english restaurant in the R_price price range
+8	Sorry there is no german restaurant in the R_location of town
+8	Sorry there is no german restaurant in the R_price price range
+8	Sorry there is no greek restaurant in the R_location of town
+8	Sorry there is no halal restaurant in the R_location of town
+8	Sorry there is no hungarian restaurant in the R_location of town
+8	Sorry there is no hungarian restaurant in the R_price price range
+8	Sorry there is no indonesian restaurant in the R_location of town
+8	Sorry there is no irish restaurant in the R_location of town
+8	Sorry there is no irish restaurant in the R_price price range
+8	Sorry there is no jamaican restaurant in the R_location of town
+8	Sorry there is no jamaican restaurant in the R_price price range
+8	Sorry there is no kosher restaurant in the R_location of town
+8	Sorry there is no moroccan restaurant in the R_price price range
+8	Sorry there is no persian restaurant in the R_price price range
+8	Sorry there is no polynesian restaurant in the R_price price range
+8	Sorry there is no romanian restaurant in the R_location of town
+8	Sorry there is no russian restaurant in the R_location of town
+8	Sorry there is no russian restaurant in the R_price price range
+8	Sorry there is no scandinavian restaurant in the R_price price range
+8	Sorry there is no steakhouse restaurant in the R_location of town
+8	Sorry there is no steakhouse restaurant in the R_price price range
+8	Sorry there is no swedish restaurant in the R_location of town
+8	Sorry there is no swedish restaurant in the R_price price range
+8	Sorry there is no swiss restaurant in the R_location of town
+8	Sorry there is no traditional restaurant in the R_location of town
+8	Sorry there is no tuscan restaurant in the R_price price range
+8	Sorry there is no unusual restaurant in the R_location of town
+8	Sorry there is no unusual restaurant in the R_price price range
+8	Sorry there is no vegetarian restaurant in the R_location of town
+8	Sorry there is no vegetarian restaurant in the R_price price range
+8	Sorry there is no welsh restaurant in the R_location of town
+8	Sorry there is no world restaurant in the R_price price range
+8	I'm sorry but there is no R_cuisine restaurant in the R_location of town
+8	I'm sorry but there is no R_cuisine restaurant in the R_location of town and the R_price price range
+8	I'm sorry but there is no restaurant serving R_cuisine food
+8	I'm sorry but there is no restaurant serving R_price R_cuisine food
+8	I'm sorry but there is no restaurant serving afghan food
+8	I'm sorry but there is no restaurant serving brazilian food
+8	I'm sorry but there is no restaurant serving crossover food
+8	I'm sorry but there is no restaurant serving greek food
+8	I'm sorry but there is no restaurant serving scandinavian food
+8	I'm sorry but there is no restaurant serving welsh food
+8	I'm sorry but there is no restaurant serving australasian food
+8	I'm sorry but there is no restaurant serving australian food
+8	I'm sorry but there is no restaurant serving austrian food
+8	I'm sorry but there is no restaurant serving barbeque food
+8	I'm sorry but there is no restaurant serving basque food
+8	I'm sorry but there is no restaurant serving belgian food
+8	I'm sorry but there is no restaurant serving canapes food
+8	I'm sorry but there is no restaurant serving cantonese food
+8	I'm sorry but there is no restaurant serving caribbean food
+8	I'm sorry but there is no restaurant serving catalan food
+8	I'm sorry but there is no restaurant serving christmas food
+8	I'm sorry but there is no restaurant serving corsica food
+8	I'm sorry but there is no restaurant serving cuban food
+8	I'm sorry but there is no restaurant serving danish food
+8	I'm sorry but there is no restaurant serving english food
+8	I'm sorry but there is no restaurant serving eritrean food
+8	I'm sorry but there is no restaurant serving german food
+8	I'm sorry but there is no restaurant serving halal food
+8	I'm sorry but there is no restaurant serving hungarian food
+8	I'm sorry but there is no restaurant serving irish food
+8	I'm sorry but there is no restaurant serving jamaican food
+8	I'm sorry but there is no restaurant serving kosher food
+8	I'm sorry but there is no restaurant serving malaysian food
+8	I'm sorry but there is no restaurant serving moroccan food
+8	I'm sorry but there is no restaurant serving northern_european food
+8	I'm sorry but there is no restaurant serving panasian food
+8	I'm sorry but there is no restaurant serving persian food
+8	I'm sorry but there is no restaurant serving polish food
+8	I'm sorry but there is no restaurant serving polynesian food
+8	I'm sorry but there is no restaurant serving romanian food
+8	I'm sorry but there is no restaurant serving russian food
+8	I'm sorry but there is no restaurant serving scottish food
+8	I'm sorry but there is no restaurant serving singaporean food
+8	I'm sorry but there is no restaurant serving steakhouse food
+8	I'm sorry but there is no restaurant serving swedish food
+8	I'm sorry but there is no restaurant serving swiss food
+8	I'm sorry but there is no restaurant serving the_americas food
+8	I'm sorry but there is no restaurant serving traditional food
+8	I'm sorry but there is no restaurant serving tuscan food
+8	I'm sorry but there is no restaurant serving unusual food
+8	I'm sorry but there is no restaurant serving vegetarian food
+8	I'm sorry but there is no restaurant serving venetian food
+8	I'm sorry but there is no restaurant serving world food
+8	Sorry but there is no other R_cuisine restaurant in the R_price price range and the R_location of town
+8	Sorry but there is no other restaurant in the R_price price range and the R_location of town
+8	Sorry there is no R_price restaurant in the R_location of town serving australian food
+8	Sorry there is no R_price restaurant in the R_location of town serving halal food
+8	Sorry there is no R_price restaurant in the R_location of town serving kosher food
+8	Sorry there is no afghan restaurant in the R_price price range
+8	Sorry there is no australian restaurant in the R_price price range
+8	Sorry there is no austrian restaurant in the R_location of town
+8	Sorry there is no belgian restaurant in the R_price price range
+8	Sorry there is no brazilian restaurant in the R_price price range
+8	Sorry there is no cantonese restaurant in the R_location of town
+8	Sorry there is no caribbean restaurant in the R_location of town
+8	Sorry there is no christmas restaurant in the R_location of town
+8	Sorry there is no corsica restaurant in the R_location of town
+8	Sorry there is no corsica restaurant in the R_price price range
+8	Sorry there is no cuban restaurant in the R_location of town
+8	Sorry there is no cuban restaurant in the R_price price range
+8	Sorry there is no eritrean restaurant in the R_location of town
+8	Sorry there is no greek restaurant in the R_price price range
+8	Sorry there is no halal restaurant in the R_price price range
+8	Sorry there is no kosher restaurant in the R_price price range
+8	Sorry there is no malaysian restaurant in the R_price price range
+8	Sorry there is no panasian restaurant in the R_location of town
+8	Sorry there is no persian restaurant in the R_location of town
+8	Sorry there is no polish restaurant in the R_location of town
+8	Sorry there is no polish restaurant in the R_price price range
+8	Sorry there is no polynesian restaurant in the R_location of town
+8	Sorry there is no scandinavian restaurant in the R_location of town
+8	Sorry there is no scottish restaurant in the R_price price range
+8	Sorry there is no swiss restaurant in the R_price price range
+8	Sorry there is no the_americas restaurant in the R_location of town
+8	Sorry there is no tuscan restaurant in the R_location of town
+8	Sorry there is no venetian restaurant in the R_price price range
+8	Sorry there is no world restaurant in the R_location of town
+9	R_name Fen Ditton is in the R_location part of town .
+9	R_name is in the R_location part of town .
+9	R_name is on R_address
+9	R_name is in the R_location , at C.B 2, 1 U.F
+9	Sure , R_name is on R_address
+9	Sure , the cow pizza kitchen and bar is on R_address
+9	Sure , the good luck R_cuisine food takeaway is on R_address
+9	Sure , R_name Fen Ditton is on pizza_express_Fen_Ditton_address
+9	Sure , the river bar steakhouse and grill is on R_address
+9	The address of R_name is 17 Magdalene Street City Centre .
+9	The address of R_name is 529 Newmarket Road Fen Ditton .
+9	The address of R_name is 7 Milton Road Chesterton .
+9	the good luck R_cuisine food takeaway is on R_address
+10	The phone number of R_name is R_phone
+10	The phone number of the cow pizza kitchen and bar is R_phone
+10	The phone number of the good luck R_cuisine food takeaway is R_phone
+10	The phone number of the river bar steakhouse and grill is R_phone
+11	R_name serves R_cuisine food .
+12	R_name is in the R_price price range
+12	The price range at R_name is R_price .
+12	The price range at the river bar steakhouse and grill is R_price .
+12	the good luck R_cuisine food takeaway is in the R_price price range
+12	R_name is in the R_price price range , and their post code is C.B 1, 3 N.F
+12	R_name is in the R_price price range , and their post code is C.B 2, 1 D.P
+12	R_name is in the R_price price range , and their post code is C.B 4, 3 L.E
+12	R_name Fen Ditton is in the R_price price range
+12	The price range at R_name Fen Ditton is R_price .
+12	The price range at the good luck R_cuisine food takeaway is R_price .
+12	the cow pizza kitchen and bar is in the R_price price range
+12	the river bar steakhouse and grill is in the R_price price range
+12	There are restaurants in all parts of town . What type of pricerange do you want?
+13	Can I help you with anything else?
+14	Would you like something in the R_price , R_price , or R_price price range?
+14	There are restaurants if you don't care about the area or the type of food . What price range would you like?
+14	There are restaurants if you don't care about the food . What price range do you want?
+14	There are restaurants in the R_location of town serving any kind of food . What price range would you like?
+14	There are restaurants serving R_cuisine food . What price range do you want?
+14	There are restaurants serving R_cuisine food in any part of town . What price range would you like?
+14	There are restaurants serving R_cuisine in the R_location of town . What price range would you like?
+14	There are restaurants serving modern_european food . What price range do you want?
+14	There are restaurants serving modern_european food in any part of town . What price range would you like?
+14	There are restaurants serving modern_european in the R_location of town . What price range would you like?
+15	The post code of R_name is R_post_code
+15	The post code of the good luck R_cuisine food takeaway is R_post_code
+15	The post code of the cow pizza kitchen and bar is R_post_code
+15	The post code of the river bar steakhouse and grill is R_post_code
+16	You are looking for a R_cuisine restaurant right?
+16	You are looking for a restaurant serving any kind of food right?
+16	You are looking for a polish restaurant right?
+16	You are looking for a afghan restaurant right?
+16	You are looking for a australasian restaurant right?
+16	You are looking for a australian restaurant right?
+16	You are looking for a austrian restaurant right?
+16	You are looking for a barbeque restaurant right?
+16	You are looking for a basque restaurant right?
+16	You are looking for a belgian restaurant right?
+16	You are looking for a brazilian restaurant right?
+16	You are looking for a canapes restaurant right?
+16	You are looking for a cantonese restaurant right?
+16	You are looking for a caribbean restaurant right?
+16	You are looking for a catalan restaurant right?
+16	You are looking for a christmas restaurant right?
+16	You are looking for a corsica restaurant right?
+16	You are looking for a creative restaurant right?
+16	You are looking for a crossover restaurant right?
+16	You are looking for a cuban restaurant right?
+16	You are looking for a danish restaurant right?
+16	You are looking for a english restaurant right?
+16	You are looking for a eritrean restaurant right?
+16	You are looking for a german restaurant right?
+16	You are looking for a greek restaurant right?
+16	You are looking for a halal restaurant right?
+16	You are looking for a hungarian restaurant right?
+16	You are looking for a indonesian restaurant right?
+16	You are looking for a irish restaurant right?
+16	You are looking for a jamaican restaurant right?
+16	You are looking for a kosher restaurant right?
+16	You are looking for a malaysian restaurant right?
+16	You are looking for a modern_european restaurant right?
+16	You are looking for a moroccan restaurant right?
+16	You are looking for a panasian restaurant right?
+16	You are looking for a persian restaurant right?
+16	You are looking for a polynesian restaurant right?
+16	You are looking for a romanian restaurant right?
+16	You are looking for a russian restaurant right?
+16	You are looking for a scandinavian restaurant right?
+16	You are looking for a scottish restaurant right?
+16	You are looking for a singaporean restaurant right?
+16	You are looking for a steakhouse restaurant right?
+16	You are looking for a swedish restaurant right?
+16	You are looking for a swiss restaurant right?
+16	You are looking for a the_americas restaurant right?
+16	You are looking for a traditional restaurant right?
+16	You are looking for a tuscan restaurant right?
+16	You are looking for a unusual restaurant right?
+16	You are looking for a vegetarian restaurant right?
+16	You are looking for a venetian restaurant right?
+16	You are looking for a welsh restaurant right?
+16	You are looking for a world restaurant right?
+16	Sorry would you like R_cuisine food or you dont care
+16	Sorry would you like R_cuisine or R_cuisine food?
+16	Sorry would you like R_cuisine or afghan food?
+16	Sorry would you like R_cuisine or basque food?
+16	Sorry would you like R_cuisine or belgian food?
+16	Sorry would you like R_cuisine or brazilian food?
+16	Sorry would you like R_cuisine or christmas food?
+16	Sorry would you like R_cuisine or corsica food?
+16	Sorry would you like R_cuisine or english food?
+16	Sorry would you like R_cuisine or german food?
+16	Sorry would you like R_cuisine or greek food?
+16	Sorry would you like R_cuisine or polynesian food?
+16	Sorry would you like R_cuisine or romanian food?
+16	Sorry would you like R_cuisine or russian food?
+16	Sorry would you like R_cuisine or vegetarian food?
+16	Sorry would you like R_cuisine or world food?
+16	Sorry would you like cantonese or halal food?
+16	Sorry would you like corsica or R_cuisine food?
+16	Sorry would you like creative or R_cuisine food?
+16	Sorry would you like crossover food or you dont care
+16	Sorry would you like crossover or modern_european food?
+16	Sorry would you like cuban or R_cuisine food?
+16	Sorry would you like danish or english food?
+16	Sorry would you like jamaican food or you dont care
+16	Sorry would you like modern_european or R_cuisine food?
+16	Sorry would you like modern_european or christmas food?
+16	Sorry would you like modern_european or cuban food?
+16	Sorry would you like polynesian or R_cuisine food?
+16	Sorry would you like romanian or R_cuisine food?
+16	Sorry would you like russian or R_cuisine food?
+16	Sorry would you like scandinavian or R_cuisine food?
+16	Sorry would you like scottish or corsica food?
+16	Sorry would you like unusual or R_cuisine food?
+16	Sorry would you like venetian or R_cuisine food?
+16	Sorry would you like world or R_cuisine food?
+16	Sorry would you like world or jamaican food?
+17	Let me confirm , You are looking for a restaurant and you dont care about the price range right?
+17	Let me confirm , You are looking for a restaurant in the R_price price range right?
+17	Sorry would you like something in the R_price price range or in the R_price price range
+17	Sorry would you like something in the R_price price range or you dont care
+18	Did you say you are looking for a restaurant in the R_location of town?
+18	Ok , a restaurant in any part of town is that right?
+18	Sorry would you like something in the R_location or in the R_location
+18	Sorry would you like the R_location of town or you dont care
