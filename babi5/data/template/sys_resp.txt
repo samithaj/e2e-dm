@@ -1,0 +1,16 @@
+0	you're welcome
+1	any preference on a type of cuisine
+2	api_call R_cuisine R_location R_number R_price
+3	great let me do the reservation
+4	hello what can i help you with today
+5	here it is R_address
+6	here it is R_phone
+7	how many people would be in your party
+8	i'm on it
+9	is there anything i can help you with
+10	ok let me look into some options for you
+11	sure is there anything else to update
+12	sure let me find an other option for you
+13	what do you think of this option: R_name
+14	where should it be
+15	which price range are looking for

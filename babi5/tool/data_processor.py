@@ -113,7 +113,7 @@ def get_api_call(s):
 
 
 def save_diff_sys_resp(data_path, kb_path):
-    save_path = 'data/template/sys_resp.txt'
+    save_path = 'babi5/data/template/sys_resp.txt'
     sys_resp_list = []
     names, values, val2attr, entities = dl.read_kb_value(kb_path)
     # print names
@@ -161,27 +161,6 @@ def sort_sentence(data_path):
     f.close()
 
 
-# Find out all system response with "ask" (to reduce conflict in restaurant name "ask")
-def save_ask(data_path):
-    ask_list = []
-    save_path = 'data/ask_sentence'
-    with open(data_path) as f:
-        lines = f.readlines()
-    f = open(save_path, 'w')
-    num_line = len(lines)
-    for i in range(num_line):
-        line = lines[i].split('\t')
-        if len(line) < 2:
-            continue
-        line = line[1]
-        words = line.strip('\n').split(' ')
-        if 'ask' in words and line not in ask_list:
-            ask_list.append(line)
-    for s in ask_list:
-        f.write(s)
-    f.close()
-
-
 if __name__ == '__main__':
     all_path = 'babi5/data/dialog-babi-task5-full-dialogs-all.txt'
     trn_path = 'babi5/data/dialog-babi-task5-full-dialogs-trn.txt'
@@ -190,6 +169,6 @@ if __name__ == '__main__':
     kb_path = 'babi5/data/dialog-babi-kb-all.txt'
     # save_kb_value(kb_path)
     save_vocab(all_path, kb_path)
-    # save_diff_sys_resp(all_path, kb_path)
+    save_diff_sys_resp(all_path, kb_path)
     # sort_sentence('data/template/sys_resp_template_2.txt')
     # save_ask(tst_path)

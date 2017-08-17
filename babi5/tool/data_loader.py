@@ -47,6 +47,7 @@ def read_kb_value(kb_path):
             line = lines[i].strip('\n').split(' ')
             name = line[1]
         entities.append(entity)
+    # print val2attr
     return names, values, val2attr, entities
 
 
@@ -79,7 +80,6 @@ def read_dialog(data_path):
         if len(line) == 0:
             usr_list.append(usr_dialog_list)
             sys_list.append(sys_dialog_list)
-            print len(usr_list), len(sys_list)
             usr_dialog_list = []
             sys_dialog_list = []
             dialog_id += 1
@@ -107,7 +107,6 @@ def read_dialog(data_path):
                         api_call['attributes'].append({'name': name})
                     api_call['attributes'][api_call['num_restaurant']-1][attribute] = value
                     i += 1
-                    # print i, lines[i]
                     line = lines[i].strip('\n').split(' ', 1)[1].split('\t')
                 i -= 1
             api_call_list.append(api_call)
@@ -194,17 +193,19 @@ def convert_2D_str2id(utc_list, word2id_dict, names, val2attr, max_length, back=
             if add_headrear:
                 line = ['<s>'] + line + ['</s>']
             id_vector = np.zeros(max_length)
-            max_actual_length = max(len(line), max_actual_length)
+            # max_actual_length = max(len(line), max_actual_length)
             actual_length = min(len(line), max_length)
             start = max_length - actual_length
             for j in range(actual_length):
                 word = line[j]
-                if word not in word2id_dict.keys():
-                    continue
                 if word in names:  # replace restaurant name
                     word = 'R_name'
+                # if word == 'six':
+                #     print word, val2attr[word]
                 if word in val2attr:  # replace restaurant attributes
                     word = val2attr[word]
+                if word not in word2id_dict.keys():
+                    continue
                 if back:
                     id_vector[start+j] = word2id_dict[word]
                 else:
@@ -311,6 +312,7 @@ def read_sys_template(data_path):
     num_line = len(lines)
     for i in range(num_line):
         line = lines[i].strip('\n').split('\t')
+        # print line
         index = line[0]
         sentence = line[1]
         template_dict[sentence] = index
@@ -343,17 +345,16 @@ def get_template_label(data_path, template_path, kb_path):
             template_label_list.append(int(template_dict[s]))
         else:
             template_label_list.append(s)
-            print i, s
     return template_label_list
 
 
 if __name__ == '__main__':
-    data_path = 'data/dialog-babi-task6-data-all.txt'
+    data_path = 'data/dialog-babi-task5-full-dialogs-all.txt'
     vocab_path = 'data/all_vocab.txt'
-    template_path = 'data/template/sys_resp_template.labeled.txt'
-    kb_path = 'data/dialog-babi-task6-data-kb.txt'
-    names, values, val2attr, entities = read_kb_value(kb_path)
-    usr_list, sys_list, api_call_list = read_dialog(data_path)
+    template_path = 'data/template/sys_resp.txt'
+    kb_path = 'data/dialog-babi-kb-all.txt'
+    # names, values, val2attr, entities = read_kb_value(kb_path)
+    # usr_list, sys_list, api_call_list = read_dialog(data_path)
     # usr_plain_list = extract_utc(usr_list)
     # sys_plain_list = extract_utc(sys_list)
     # word2id_dict, id2word_list = read_word2id(vocab_path, 770)
@@ -362,9 +363,9 @@ if __name__ == '__main__':
     # dialog = flatten_history(dialog)
     # dialog_id = convert_2D_str2id(dialog, word2id_dict, names, val2attr, 5*20)
     # api_number_list = get_api_number(api_call_list, dialog)
-    template_dict = read_sys_template(template_path)
+    # template_dict = read_sys_template(template_path)
     label_list = get_template_label(data_path, template_path, kb_path)
-
+    print label_list
     # # Test read_dialog
     # for i in range(10):  # Show data
     #     num_turn = len(usr_list[i])
@@ -391,8 +392,3 @@ if __name__ == '__main__':
     # for k in template_dict.keys():
     #     print k, template_dict[k]
     # print len(template_dict.keys())
-    sys_list = flatten_2D(sys_list)
-    f = open('data/template_label.txt', 'w')
-    for i in range(len(label_list)):
-        f.write('%s\n' % (label_list[i]))
-    f.close()
