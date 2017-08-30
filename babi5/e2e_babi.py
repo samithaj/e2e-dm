@@ -1,8 +1,8 @@
 # coding:utf-8
 
 '''
-  This script is for policy_babi5 (dialog act) prediction.
-  Created on Aug 16, 2017
+  This script is for e2e_dm modeling (on babi5 dataset).
+  Created on Aug 21, 2017
   Author: qihu@mobvoi.com
 '''
 
@@ -115,6 +115,24 @@ class Data(object):
                                              self.val2attr,
                                              params.turn_num * params.utc_length,
                                              back=True)
+        train_output_id = dl.convert_2D_str2id(self.train_sys,
+                                               self.word2id,
+                                               self.names,
+                                               self.val2attr,
+                                               params.utc_length,
+                                               add_headrear=True)
+        dev_output_id = dl.convert_2D_str2id(self.dev_sys,
+                                             self.word2id,
+                                             self.names,
+                                             self.val2attr,
+                                             params.utc_length,
+                                             add_headrear=True)
+        test_output_id = dl.convert_2D_str2id(self.test_sys,
+                                              self.word2id,
+                                              self.names,
+                                              self.val2attr,
+                                              params.utc_length,
+                                              add_headrear=True)
         # Get number of restaurant in api_call result
         train_api_number = dl.get_api_number(train_api, train_input)
         dev_api_number = dl.get_api_number(dev_api, dev_input)
@@ -124,6 +142,10 @@ class Data(object):
         self.train_input_id = dl.flatten_2D(train_input_id)
         self.dev_input_id = dl.flatten_2D(dev_input_id)
         self.test_input_id = dl.flatten_2D(test_input_id)
+
+        self.train_output_id = dl.flatten_2D(train_output_id)
+        self.dev_output_id = dl.flatten_2D(dev_output_id)
+        self.test_output_id = dl.flatten_2D(test_output_id)
 
         self.train_api_num = dl.flatten_2D(train_api_number)
         self.dev_api_num = dl.flatten_2D(dev_api_number)
@@ -157,16 +179,20 @@ class Data(object):
     def get_train_batch(self):
         start = self._pointer
         end = self._pointer + self.batch_size
-        word_id = self.train_input_id[start:end]
-        api_num = self.get_api_vector(self.train_api_num[start:end])
-        label_id = self.get_act_vector(self.train_label[start:end])
+        input_id = self.train_input_id[start:end]
+        api_num = self.train_api_num[start:end]
+        output_id = self.train_output_id[start:end]
         self.next_batch()
-        return word_id, api_num, label_id
+        return self.get_batch(input_id, api_num, output_id)
 
-    def get_api_vector(self, api_num):
-        api_list = []
-        num = len(api_num)
-        for i in range(num):
+    # Get a batch of data
+    def get_batch(self, input_id, api_num, output_id):
+        usr_list = input_id
+        api_number_list = []
+        sys_in_list = []
+        sys_out_list = []
+        # print self.train_input_id
+        for i in range(self.batch_size):
             # print self.train_output_id
             api_number = np.zeros(3)
             if api_num[i] > 1:
@@ -175,35 +201,33 @@ class Data(object):
                 api_number[1] = 1
             elif api_num[i] == 0:
                 api_number[0] = 1
-            api_list.append(api_number)
-        return api_list
-
-    def get_act_vector(self, act_id):
-        act_list = []
-        num = len(act_id)
-        for i in range(num):
-            # print self.train_output_id
-            act_vect = np.zeros(self.act_size)
-            act_vect[act_id[i]] = 1
-            act_list.append(act_vect)
-        return act_list
+            api_number_list.append(api_number)
+            sys_in = np.zeros(self.utc_length)
+            sys_out = np.zeros(self.utc_length)
+            sys_in[:-1] = output_id[i][:-1]
+            sys_out[:-1] = output_id[i][1:]
+            sys_in_list.append(sys_in)
+            sys_out_list.append(sys_out)
+        return usr_list, api_number_list, sys_in_list, sys_out_list
 
 
 # Define the Seq2Seq model for dialogue system
-class Policy(object):
+class Seq2Seq(object):
     def __init__(self, params):
         # Input variable
-        if params.test_on == 1:  # Test
-            if params.data_opt:
-                params.batch_size = params.dev_size  # On test set
-            else:
-                params.batch_size = params.test_size  # On dev set
+        if infer == 1:
+            batch_size = 1
+            gen_length = 1
+        else:
+            batch_size = params.batch_size
+            gen_length = params.gen_length
         # print 'Batch_size: %d' % params.batch_size
         self.dropout_keep = tf.placeholder_with_default(tf.constant(1.0), shape=None, name='dropout_keep')
         self.lr = tf.placeholder_with_default(tf.constant(0.01), shape=None, name='learning_rate')
         self.x_word = tf.placeholder(tf.int32, shape=(None, params.turn_num * params.utc_length), name='x_word')
         self.x_api = tf.placeholder(tf.float32, shape=(None, 3), name='x_api')
-        self.y_act = tf.placeholder(tf.int32, shape=(None, params.act_size), name='y_word')
+        self.y_word_in = tf.placeholder(tf.int32, shape=(None, params.utc_length), name='y_word_in')
+        self.y_word_out = tf.placeholder(tf.int32, shape=(None, params.utc_length), name='y_word_out')
         # Word embedding
         x_embedding = tf.get_variable(name='x_embedding', shape=[params.vocab_size+1, params.embed_size])
         x_word_embedded = tf.nn.embedding_lookup(x_embedding, self.x_word, name='x_word_embedded')

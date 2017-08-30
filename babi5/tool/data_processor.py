@@ -13,7 +13,7 @@
 '''
 
 import data_loader as dl
-
+import copy
 
 # Save the attributes list in knowledge base to plain txt
 def save_kb_value(kb_path):
@@ -161,14 +161,79 @@ def sort_sentence(data_path):
     f.close()
 
 
+# Split all dialogs by api call, so that each sample will have a paragraph and an api_call label
+def split_api(data_path):
+    usr_path = './data/tracker_usr_data.txt'
+    sys_path = './data/tracker_sys_data.txt'
+    label_path = './data/tracker_label_data.txt'
+    usr_list = []
+    sys_list = []
+    label_list = []
+    usr_tmp_list = []
+    sys_tmp_list = []
+    with open(data_path) as f:
+        lines = f.readlines()
+    num_line = len(lines)
+    f_usr = open(usr_path, 'w')
+    f_sys = open(sys_path, 'w')
+    f_label = open(label_path, 'w')
+    for i in range(num_line):
+        line = lines[i].strip('\n').split('\t')
+        if len(line) == 1 and len(line[0]) == 0:
+            usr_tmp_list = []
+            sys_tmp_list = []
+            continue
+        if len(line) == 1:
+            continue
+        if line[1].split(' ')[0] == 'api_call':
+            labels = line[1].split(' ')
+            label_dict = {
+                'cuisine': labels[1],
+                'location': labels[2],
+                'number': labels[3],
+                'price': labels[4]
+            }
+            label_list.append(label_dict)
+            usr_list.append(copy.deepcopy(usr_tmp_list))
+            sys_list.append(copy.deepcopy(sys_tmp_list))
+            continue
+        usr_tmp_list.append(line[0].split(' ', 1)[1])
+        sys_tmp_list.append(line[1])
+    num_sample = len(label_list)
+    # print num_sample, len(usr_list), len(sys_list)
+    # print len(usr_list[1])
+    for i in range(num_sample):
+        num_usr_turn = len(usr_list[i])
+        num_sys_turn = len(sys_list[i])
+        for j in range(num_usr_turn):
+            usr_utc = '%s\n' % usr_list[i][j]
+            f_usr.write(usr_utc)
+        for j in range(num_sys_turn):
+            sys_utc = '%s\n' % sys_list[i][j]
+            f_sys.write(sys_utc)
+        label_str = '%s %s %s %s\n' % (label_list[i]['cuisine'],
+                                       label_list[i]['location'],
+                                       label_list[i]['number'],
+                                       label_list[i]['price'])
+        f_label.write(label_str)
+        f_usr.write('\n')
+        f_sys.write('\n')
+
+    # print usr_list[1]
+    f_usr.close()
+    f_sys.close()
+    f_label.close()
+
+
 if __name__ == '__main__':
-    all_path = 'babi5/data/dialog-babi-task5-full-dialogs-all.txt'
-    trn_path = 'babi5/data/dialog-babi-task5-full-dialogs-trn.txt'
-    dev_path = 'babi5/data/dialog-babi-task5-full-dialogs-dev.txt'
-    tst_path = 'babi5/data/dialog-babi-task5-full-dialogs-tst.txt'
-    kb_path = 'babi5/data/dialog-babi-kb-all.txt'
+    all_path = 'data/dialog-babi-task5-full-dialogs-all.txt'
+    trn_path = 'data/dialog-babi-task5-full-dialogs-trn.txt'
+    dev_path = 'data/dialog-babi-task5-full-dialogs-dev.txt'
+    tst_path = 'data/dialog-babi-task5-full-dialogs-tst.txt'
+    kb_path = 'data/dialog-babi-kb-all.txt'
     # save_kb_value(kb_path)
-    save_vocab(all_path, kb_path)
-    save_diff_sys_resp(all_path, kb_path)
+    # save_vocab(all_path, kb_path)
+    # save_diff_sys_resp(all_path, kb_path)
     # sort_sentence('data/template/sys_resp_template_2.txt')
     # save_ask(tst_path)
+    split_api(dev_path)

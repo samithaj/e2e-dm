@@ -285,6 +285,7 @@ def flatten_2D(data_list):
     return flat_list
 
 
+# restore model for test
 def optimistic_restore(session, save_file):
     reader = tf.train.NewCheckpointReader(save_file)
     saved_shapes = reader.get_variable_to_shape_map()
@@ -300,7 +301,7 @@ def optimistic_restore(session, save_file):
     saver = tf.train.Saver(restore_vars)
     saver.restore(session, save_file)
 
-
+# Read sys template for LG classification
 def read_sys_template(data_path):
     template_dict = {}
     with open(data_path) as f:
@@ -314,6 +315,7 @@ def read_sys_template(data_path):
     return template_dict
 
 
+#
 def convert_template(s, name_list, val2attr):
     words = s.split(' ')
     num_word = len(words)

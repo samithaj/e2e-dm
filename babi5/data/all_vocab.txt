@@ -1,5 +1,36 @@
 <s> 40000
-</s> 40000
+<u> 40000
+<cuisine>
+<location>
+<number>
+<price>
+korean
+cantonese
+japanese
+thai
+vietnamese
+indian
+italian
+french
+spanish
+british
+seoul
+tokyo
+beijing
+bangkok
+hanoi
+paris
+rome
+bombay
+madrid
+london
+four
+six
+eight
+two
+cheap
+moderate
+expensive
 you 32460
 for 18058
 <SILENCE> 16367

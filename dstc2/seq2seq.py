@@ -1,6 +1,7 @@
 # coding:utf-8
 
 '''
+  [Buggy]
   This script is for e2e_dm modeling (on DSTC2 dataset).
   Created on Aug 8, 2017
   Author: qihu@mobvoi.com

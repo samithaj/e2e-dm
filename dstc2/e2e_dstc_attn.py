@@ -1,7 +1,7 @@
 # coding:utf-8
 
 '''
-  This script is for e2e_dm modeling (on DSTC2 dataset).
+  This script is for e2e_dm model (on DSTC2 dataset).
   Created on Aug 8, 2017
   Author: qihu@mobvoi.com
 '''
@@ -12,13 +12,14 @@ import sys
 import numpy as np
 import tensorflow as tf
 import tool.data_loader as dl
+from tensorflow.python.layers.core import Dense
 # import tensorflow.contrib.seq2seq.DynamicAttentionWrapper as DynamicAttentionWrapper
 # import tensorflow.contrib.seq2seq.LuongAttention as LuongAttention
 
 
 # Define some parameters for model setup, training and data loading
 class Parameters():
-    batch_size = 1000
+    batch_size = 2000
     grad_clip = 1
     epoch_num = 200
     learning_rate = 0.1
@@ -26,7 +27,7 @@ class Parameters():
     save_step = 20
     check_step = 10
 
-    turn_num = 2  # number of history turns
+    turn_num = 3  # number of history turns
     vocab_size = 771  # number of words used in vocabulary
     utc_length = 20  # Max length of sentence, a sentence longer than max_length will be truncated
     gen_length = 20
@@ -34,14 +35,15 @@ class Parameters():
     embed_size = 20
     state_size = 40
 
-    data_dir = '/home/qihu/PycharmProjects/e2e-dm_babi/data'
-    tmp_dir = '/home/qihu/PycharmProjects/e2e-dm_babi/tmp'
+    proj_dir = '/home/qihu/PycharmProjects/e2e-dm_babi/dstc2'
+    data_dir = os.path.join(proj_dir, 'data')
+    tmp_dir = os.path.join(proj_dir, 'tmp', 'attn')
     vocab_path = os.path.join(data_dir, 'all_vocab.txt')
-    kb_path = os.path.join(data_dir, 'dialog-babi-task6-data-kb.txt')
+    kb_path = os.path.join(data_dir, 'dialog-babi-task6-dstc2-kb.txt')
     # Train/Dev/Test path
-    train_path = os.path.join(data_dir, 'dialog-babi-task6-data-trn.txt')
-    dev_path = os.path.join(data_dir, 'dialog-babi-task6-data-dev.txt')
-    test_path = os.path.join(data_dir, 'dialog-babi-task6-data-tst.txt')
+    train_path = os.path.join(data_dir, 'dialog-babi-task6-dstc2-trn.txt')
+    dev_path = os.path.join(data_dir, 'dialog-babi-task6-dstc2-dev.txt')
+    test_path = os.path.join(data_dir, 'dialog-babi-task6-dstc2-tst.txt')
 
 
 # Define the Data class for data preparing
@@ -181,13 +183,13 @@ class Seq2Seq(object):
         if infer == 1:
             batch_size = 1
             gen_length = 1
-
         self.dropout_keep = tf.placeholder_with_default(tf.constant(1.0), shape=None)
         self.lr = tf.placeholder_with_default(tf.constant(0.01), shape=None)
         self.x_word = tf.placeholder(tf.int32, shape=(None, params.turn_num * params.utc_length), name='x_word')
         self.x_api = tf.placeholder(tf.float32, shape=(None, 3), name='x_api')
         self.y_word_in = tf.placeholder(tf.int32, shape=(None, gen_length), name='y_word')
         self.y_word_out = tf.placeholder(tf.int32, shape=(None, gen_length), name='y_word')
+        self.y_len = tf.placeholder(tf.int32, shape=(None,))
         # Word embedding
         x_embedding = tf.get_variable(name='x_embedding', shape=[params.vocab_size, params.embed_size])
         x_word_embedded = tf.nn.embedding_lookup(x_embedding, self.x_word)
@@ -198,7 +200,7 @@ class Seq2Seq(object):
         x_api_extend = x_api
         for i in range(gen_length - 1):
             x_api_extend = tf.concat([x_api_extend, x_api], 1)
-        y_word_embedded = tf.concat([y_word_embedded, x_api_extend], 2)
+        # y_word_embedded = tf.concat([y_word_embedded, x_api_extend], 2)
 
         def single_cell(state_size):  # define the cell of LSTM
             return tf.contrib.rnn.BasicLSTMCell(state_size)
@@ -207,12 +209,11 @@ class Seq2Seq(object):
         with tf.variable_scope('encoder'):
             self.encoder_multi_cell = tf.contrib.rnn.MultiRNNCell(
                 [single_cell(params.state_size) for _ in range(params.layer_num)])  # multi-layer
-            self.encoder_initial_state = self.encoder_multi_cell.zero_state(
-                batch_size, tf.float32)  # init state of LSTM
-            self.encoder_outputs, self.encoder_last_state = tf.nn.dynamic_rnn(self.encoder_multi_cell,
-                                                                              x_word_embedded,
-                                                                              initial_state=self.encoder_initial_state,
-                                                                              scope='encoder')
+            self.encoder_outputs, self.encoder_state = tf.nn.dynamic_rnn(self.encoder_multi_cell,
+                                                                         x_word_embedded,
+                                                                         sequence_length=[params.utc_length]*params.batch_size,
+                                                                         dtype=tf.float32,
+                                                                         scope='encoder')
         with tf.variable_scope('decoder'):
             self.decoder_multi_cell = tf.contrib.rnn.MultiRNNCell(
                 [single_cell(params.state_size) for _ in range(params.layer_num)])  # multi-layer
@@ -221,31 +222,35 @@ class Seq2Seq(object):
                                                              memory=self.encoder_outputs,
                                                              name='attention_mechanic')
             attn_cell = tf.contrib.seq2seq.AttentionWrapper(self.decoder_multi_cell,
-                                                            attention_mechanism=attn_mech)
+                                                            attention_mechanism=attn_mech,
+                                                            attention_layer_size=128,
+                                                            name="attention_wrapper")
             attn_zero = attn_cell.zero_state(batch_size=batch_size,
                                              dtype=tf.float32)
-            self.decoder_initial_state = attn_zero.clone(cell_state=self.encoder_last_state)
             train_helper = tf.contrib.seq2seq.TrainingHelper(inputs=y_word_embedded,
-                                                             sequence_length=[gen_length])
+                                                             sequence_length=self.y_len,
+                                                             time_major=False)
+            projection_layer = Dense(params.vocab_size)
             decoder = tf.contrib.seq2seq.BasicDecoder(
-                cell=attn_cell,
+                cell=attn_cell,  # attn_cell,
                 helper=train_helper,  # A Helper instance
-                initial_state=self.decoder_initial_state,  # initial state of decoder
-                output_layer=None)  # instance of tf.layers.Layer, like Dense
+                initial_state=attn_zero.clone(cell_state=self.encoder_state),  # initial state of decoder
+                output_layer=projection_layer)  # instance of tf.layers.Layer, like Dense
 
             # Perform dynamic decoding with decoder
-            self.decoder_outputs, self.decoder_state, _ = tf.contrib.seq2seq.dynamic_decode(decoder=decoder)
-
-        self.w = tf.get_variable("softmax_w", [params.state_size, params.vocab_size])  # weights for output
+            self.decoder_outputs, self.decoder_state, _ = tf.contrib.seq2seq.dynamic_decode(decoder=decoder,
+                                                                                            impute_finished=True,
+                                                                                            maximum_iterations=gen_length)
+        self.w = tf.get_variable("softmax_w", [params.vocab_size, params.vocab_size])  # weights for output
         self.b = tf.get_variable("softmax_b", [params.vocab_size])
         outputs = self.decoder_outputs[0]
         # Loss
-        output = tf.reshape(outputs, [-1, params.state_size])
+        output = tf.reshape(outputs, [-1, params.vocab_size])
         self.logits = tf.matmul(output, self.w) + self.b
         self.probs = tf.nn.softmax(self.logits)
         targets = tf.reshape(self.y_word_out, [-1])
         weights = tf.ones_like(targets, dtype=tf.float32)
-        # print self.logits, targets, weights
+
         loss = tf.contrib.legacy_seq2seq.sequence_loss([self.logits], [targets], [weights])
         self.cost = tf.reduce_sum(loss) / batch_size
         optimizer = tf.train.AdamOptimizer(self.lr)
@@ -267,14 +272,12 @@ def train(data, model, params):
                                                           data.dev_api_num,
                                                           data.dev_output_id,
                                                           len(data.dev_input_id))
-    # print x_word[2]
-    # print y_word_in[2]
-    # print y_word_out[2]
     dev_feed_dict = {
         model.x_word: x_word[:params.batch_size],
         model.x_api: x_api[:params.batch_size],
         model.y_word_in: y_word_in[:params.batch_size],
         model.y_word_out: y_word_out[:params.batch_size],
+        model.y_len: [params.gen_length]*params.batch_size,
         model.dropout_keep: 1.0
     }
 
@@ -286,12 +289,13 @@ def train(data, model, params):
             model.x_api: x_api,
             model.y_word_in: y_word_in,
             model.y_word_out: y_word_out,
+            model.y_len: [params.gen_length]*params.batch_size,
             model.dropout_keep: 0.5
         }
-
+        # outputs = sess.run(model.decoder_outputs, feed_dict=feed_dict)
+        # print outputs[0].shape
         train_loss, _ = sess.run([model.cost, model.train_op], feed_dict=feed_dict)
-        # print tf.Print(model.encoder_outputs, [model.encoder_outputs[0][59][0]])
-        # print tf.Print(model.encoder_last_state, [model.encoder_last_state[0][0]])
+
         if i % params.check_step == 0:
             dev_loss = sess.run(model.cost, feed_dict=dev_feed_dict)
             print('Step: %d/%d, train_loss: %.5f, dev_loss: %.5f'
@@ -319,17 +323,7 @@ def test(data, model, params):
         x_raw_str = raw_str[i]
         x_word = [test_x_word[i]]
         x_api = [test_x_api[i]]
-        y_word_in = [test_y_word_in[i]]
-        y_word_out = [test_y_word_out[i]]
         # Run encoder just once
-        state = sess.run(model.encoder_multi_cell.zero_state(1, tf.float32))
-        feed_dict = {
-            model.x_word: x_word,
-            model.encoder_initial_state: state,
-        }
-        state = sess.run(model.decoder_state, feed_dict)
-        # state = sess.run(model.decoder_multi_cell.zero_state(1, tf.float32))
-        # Run decoder
         answer = ''
         word = '<s>'
         for j in range(params.utc_length):
@@ -339,9 +333,11 @@ def test(data, model, params):
                 model.x_word: x_word,
                 model.x_api: x_api,
                 model.y_word_in: x,
-                model.decoder_initial_state: state,
+                model.y_len: [params.gen_length],
+                model.dropout_keep: 1.0,
             }
-            probs, state = sess.run([model.probs, model.decoder_state], feed_dict)
+            probs = sess.run(model.probs, feed_dict)
+            print probs
             p = probs[0]
             word = data.convert(np.argmax(p), data.id2word)
             if word == '</s>':

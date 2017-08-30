@@ -6,6 +6,7 @@
   Author: qihu@mobvoi.com
 '''
 
+import os
 import copy
 import numpy as np
 import tensorflow as tf
@@ -145,7 +146,7 @@ def read_word2id(vocab_path, num_word):
     with open(vocab_path) as f:
         lines = f.readlines()
     for i in range(num_word):
-        word = lines[i].split(' ')[0]
+        word = lines[i].strip('\n').split(' ')[0]
         word2id_dict[word] = i+1
         id2word_list.append(word)
     return word2id_dict, id2word_list
@@ -348,11 +349,106 @@ def get_template_label(data_path, template_path, kb_path):
     return template_label_list
 
 
+def read_tracker_label(label_path, word2id, slots):
+    with open(label_path) as f:
+        lines = f.readlines()
+    num_line = len(lines)
+    label_id = {}
+    for s in slots:
+        label_id[s] = []
+    for i in range(num_line):
+        line = lines[i].strip('\n').split(' ')
+        for j in range(len(slots)):
+            vector = np.zeros(2)
+            vector[0] = word2id['<'+slots[j]+'>']
+            vector[1] = word2id[line[j]]
+            label_id[slots[j]].append(vector)
+    return label_id
+
+
+def get_tracker_label_pos(dialog_vect, label_path, word2id, slots):
+    with open(label_path) as f:
+        lines = f.readlines()
+    num_line = len(lines)
+    len_dialog = dialog_vect[0].shape[0]
+    label_pos = {}
+    for s in slots:
+        label_pos[s] = []
+    for i in range(num_line):
+        dialog = dialog_vect[i]
+        line = lines[i].strip('\n').split(' ')
+        for j in range(len(slots)):
+            value = word2id[line[j]]
+            vector = np.zeros(2)
+            for k in range(len_dialog):
+                if dialog[k] == value:
+                    vector[0] = k  # start index
+                    vector[1] = k  # end index
+                    break
+            label_pos[slots[j]].append(vector)
+    return label_pos
+
+
+def read_tracker_utcs(data_path):
+    dialog_list = []
+    tmp_list = []
+    with open(data_path) as f:
+        lines = f.readlines()
+    num_line = len(lines)
+    for i in range(num_line):
+        line = lines[i].strip('\n')
+        # print len(line), line
+        if len(line):
+            tmp_list.append(line)
+        else:
+            dialog_list.append(tmp_list)
+            tmp_list = []
+    return dialog_list
+
+
+# Read dialog and combine user utterances and system responses
+def read_tracker_dialog(usr_path, sys_path, word2id, max_len):
+    usr_dialog_list = read_tracker_utcs(usr_path)
+    sys_dialog_list = read_tracker_utcs(sys_path)
+    num_dialog = len(usr_dialog_list)
+    dialog_list = []
+    dialog_vector_list = []
+    longest = 0
+    for i in range(num_dialog):
+        history = ''
+        usr_dialog = usr_dialog_list[i]
+        sys_dialog = sys_dialog_list[i]
+        num_turn = len(usr_dialog)
+        for j in range(num_turn):
+            history = history+'<u> '+usr_dialog[j]+' '
+            history = history+'<s> '+sys_dialog[j]+' '
+        dialog_vector = np.zeros(max_len)
+        history = history[:-1]
+        words = history.split(' ')
+        num_word = len(words)
+        # print num_word
+        longest = max(longest, num_word)
+        start = max_len - num_word
+        if start < 0:
+            print 'ERROR: exceed MAX_LENGTH of a dialog!'
+        for j in range(num_word):
+            dialog_vector[start+j] = word2id[words[j]]
+        dialog_vector_list.append(dialog_vector)
+        dialog_list.append(history)
+    # print 'LONGEST', longest
+    return dialog_list, dialog_vector_list
+
+
 if __name__ == '__main__':
+    slots = ['cuisine', 'location', 'number', 'price']
     data_path = 'data/dialog-babi-task5-full-dialogs-all.txt'
     vocab_path = 'data/all_vocab.txt'
     template_path = 'data/template/sys_resp.txt'
     kb_path = 'data/dialog-babi-kb-all.txt'
+    kb_dir = 'data/kb_value'
+    tracker_usr_path = 'data/tracker_usr_all.txt'
+    tracker_sys_path = 'data/tracker_sys_all.txt'
+    tracker_label_path = 'data/tracker_label_all.txt'
     # names, values, val2attr, entities = read_kb_value(kb_path)
     # usr_list, sys_list, api_call_list = read_dialog(data_path)
     # usr_plain_list = extract_utc(usr_list)
@@ -364,8 +460,8 @@ if __name__ == '__main__':
     # dialog_id = convert_2D_str2id(dialog, word2id_dict, names, val2attr, 5*20)
     # api_number_list = get_api_number(api_call_list, dialog)
     # template_dict = read_sys_template(template_path)
-    label_list = get_template_label(data_path, template_path, kb_path)
-    print label_list
+    # label_list = get_template_label(data_path, template_path, kb_path)
+
     # # Test read_dialog
     # for i in range(10):  # Show data
     #     num_turn = len(usr_list[i])
@@ -392,3 +488,10 @@ if __name__ == '__main__':
     # for k in template_dict.keys():
     #     print k, template_dict[k]
     # print len(template_dict.keys())
+    word2id, id2word = read_word2id(vocab_path, 143)
+    dialogs, dialog_vectors = read_tracker_dialog(tracker_usr_path, tracker_sys_path, word2id, 160)
+    label_id = read_tracker_label(tracker_label_path, word2id, slots)
+    label_pos = get_tracker_label_pos(dialog_vectors, tracker_label_path, word2id, slots)
+    print label_id['cuisine'][:2]
+    print dialog_vectors[:2]
+    # print labels['cuisine'][:5]
